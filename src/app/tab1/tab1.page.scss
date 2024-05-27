@@ -1,0 +1,154 @@
+ion-header{
+    --border-style: none;
+    .header-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        ion-text{
+
+            h1{
+                margin: 0;
+                font-weight: 600;
+                color: #212121;
+            }
+        }
+
+        ion-avatar{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                max-width: 100%;
+                width: 70%;
+                height: 70%;
+            }
+        }
+    }
+}
+
+.introduction{
+    padding: 1rem;
+    background-color: var(--ion-color-primary);
+    color: #212121;
+    border-radius: 30px;
+
+    ion-text{
+        h2{
+            font-weight: bold;
+        }
+
+        p{
+            font-family: 600;
+        }
+    }
+}
+
+.tools{
+ 
+    ion-text{
+        h2{
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .tools-cards{
+
+        .card{
+            border-radius: 30px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+
+            &#pdf{
+                background-color: #212121;
+                color: #fff;
+            }
+
+            &#unidade{
+                background-color: #ABBAEF;
+                color: #212121;
+            }
+
+            h4{
+                font-weight: bold;
+            }
+
+            p{
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.recommendations{
+
+
+    .recommendations-content{
+
+        ion-text{
+            h2{
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .recommendations-slide{
+
+            .recommendations-slide-item{
+                background-color: #FFF2D1;
+                padding: 2rem 1rem;
+                text-align: center;
+                border-radius: 30px;
+
+                .slide-image{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    ion-img{
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        
+                        &::part(image){
+                            width: 55%;
+                        }
+                    }
+                }
+
+                .slide-description{
+
+                    ion-text{
+                        p{
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .slide-dots{
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+                    span{
+                        display: block;
+                        height: 12px;
+                        width: 12px;
+                        background-color: #212121;
+                        border-radius: 10px;
+                        
+                        &.active{
+                            background-color: #FFF;
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}

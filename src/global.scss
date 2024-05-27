@@ -24,6 +24,7 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 
 /**
  * Ionic Dark Mode
@@ -33,5 +34,32 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+/* @import "@ionic/angular/css/palettes/dark.system.css"; */
+
+*{
+    font-family: "Palanquin", sans-serif;
+}
+
+.header-md{
+    box-shadow: none !important;
+}
+
+ion-toolbar{
+    ion-img{
+
+        display: flex;
+        justify-content: center;
+
+        &::part(image){
+            width: 65%;
+        }
+
+    }
+}
+
+.button-link{
+    ion-button{
+        --border-radius: 50%
+    }
+}
