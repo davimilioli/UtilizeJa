@@ -1,17 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <div class="header-content">
+      <ion-img src="assets/logo/logo.png"></ion-img>
+      <ion-button shape="round" color="light">
+        <ion-icon aria-hidden="true" name="settings-sharp" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card class="color-primary">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="reload-circle"></ion-icon>
+        Bloco de Notas
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto officiis, reprehenderit quaerat minima odit quia, eaque error debitis quam nostrum aspernatur...
+    </ion-card-content>
+    <div class="button-link ion-text-end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
 </ion-content>
