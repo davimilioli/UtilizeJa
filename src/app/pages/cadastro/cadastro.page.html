@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-img src="assets/logo/logo.png"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-header">
+    <ion-text>
+      <h1> Crie sua conta</h1>
+    </ion-text>
+    <ion-text>
+      <p> Junte-se a nós e comece a organizar seu dia a dia!</p>
+    </ion-text>
+  </div>
+  <form class="login-form">
+    <ion-input labelPlacement="stacked" placeholder="Digite seu email">
+      <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+    </ion-input>
+    <ion-input labelPlacement="stacked" placeholder="Digite sua senha">
+      <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+      <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-input>
+    <ion-input labelPlacement="stacked" placeholder="Repita sua senha">
+      <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+      <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-input>
+    <ion-button shape="default" type="submit" id="button-login">Cadastrar</ion-button>
+  </form>
+  <div class="text-other">
+    <p>OU</p>
+  </div>
+  <div class="login-google">
+    <ion-button size="small" color="light">
+      <ion-img src="assets/icon/google.png"></ion-img>
+      Faça login com o Google
+    </ion-button>
+  </div>
+  <p class="text-direct-form ion-text-center">Já possui login? <a [routerLink]="['/login']" >Login</a></p>
+</ion-content>

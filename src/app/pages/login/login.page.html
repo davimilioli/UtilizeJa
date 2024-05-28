@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-img src="assets/logo/logo.png"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-header">
+    <ion-text>
+      <h1>Faça login na sua conta</h1>
+    </ion-text>
+    <ion-text>
+      <p>Estamos felizes em vê-lo novamente</p>
+    </ion-text>
+  </div>
+  <form class="login-form">
+    <ion-input labelPlacement="stacked" placeholder="Digite seu email">
+      <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+    </ion-input>
+    <ion-input labelPlacement="stacked" placeholder="Digite sua senha">
+      <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+      <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-input>
+    <ion-button shape="default" type="submit" id="button-login">Fazer Login</ion-button>
+  </form>
+  <div class="text-other">
+    <p>OU</p>
+  </div>
+  <div class="login-google">
+    <ion-button size="small" color="light">
+      <ion-img src="assets/icon/google.png"></ion-img>
+      Faça login com o Google
+    </ion-button>
+  </div>
+  <p class="text-direct-form ion-text-center">Não possui cadastro? <a [routerLink]="['/cadastro']">Cadastrar</a></p>
+</ion-content>
