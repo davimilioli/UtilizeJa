@@ -1,0 +1,47 @@
+ion-card{
+    border-radius: var(--radius-custom);
+    box-shadow: none;
+    margin-bottom: 1rem;
+    
+    &.color-primary{
+        background-color: var(--ion-color-primary);
+    }
+
+    &.color-light-blue{
+        background-color: #ABBAEF;
+    }
+
+    
+    &.color-peach{
+        background-color: #F8A084;
+    }
+
+    ion-card-title{
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 1.25rem;
+    }
+
+    ion-card-content{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .2rem;
+        .tag{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #212121;
+            padding: .1rem .4rem;
+            border-radius: var(--radius-custom);
+            color: #FFF;
+            margin: .3rem 0;
+        }
+    }
+
+    .button-link{
+        padding: 0 1rem .5rem 1rem;
+    }
+}

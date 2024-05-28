@@ -1,17 +1,92 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <div class="header-content">
+      <ion-img src="assets/logo/logo.png"></ion-img>
+      <ion-button shape="round" color="light">
+        <ion-icon aria-hidden="true" name="settings-sharp" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="color-primary">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="build"></ion-icon>
+        Ferramentas
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Conversor de PDF
+      </div>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Conversor de Unidade
+      </div>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Baixar Vídeo e Áudio do Youtube
+      </div>
+    </ion-card-content>
+    <div class="button-link ion-text-end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card class="color-light-blue">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="location"></ion-icon>
+        Localização
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Consulta de CEP
+      </div>
+    </ion-card-content>
+    <div class="button-link ion-text-end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card class="color-peach">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="calendar-clear"></ion-icon>
+        Planejamento
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Bloco de Notas
+      </div>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Calendário e Agenda
+      </div>
+      <div class="tag">
+        <ion-icon name="ellipse"></ion-icon>
+        Lista de Tarefas
+      </div>
+    </ion-card-content>
+    <div class="button-link ion-text-end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+
 </ion-content>
