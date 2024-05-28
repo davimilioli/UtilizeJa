@@ -41,6 +41,38 @@
     font-family: "Palanquin", sans-serif;
 }
 
+ion-header{
+    --border-style: none;
+    .header-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        ion-text{
+
+            h1{
+                margin: 0;
+                font-weight: 600;
+                color: #212121;
+            }
+        }
+
+        ion-avatar{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                max-width: 100%;
+                width: 70%;
+                height: 70%;
+            }
+        }
+    }
+}
+
 .header-md{
     box-shadow: none !important;
 }
@@ -49,10 +81,10 @@ ion-toolbar{
     ion-img{
 
         display: flex;
-        justify-content: center;
+        justify-content: start;
 
         &::part(image){
-            width: 65%;
+            width: 60%;
         }
 
     }
