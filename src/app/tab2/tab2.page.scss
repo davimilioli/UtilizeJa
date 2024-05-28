@@ -29,6 +29,7 @@ ion-card{
         align-items: center;
         flex-wrap: wrap;
         gap: .2rem;
+
         .tag{
             display: flex;
             align-items: center;
@@ -38,6 +39,7 @@ ion-card{
             border-radius: var(--radius-custom);
             color: #FFF;
             margin: .3rem 0;
+            font-size: 12px;
         }
     }
 
