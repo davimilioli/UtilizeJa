@@ -1,94 +1,98 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header-content">
-      <ion-text>
-        <h1>
-          Olá Rafael
-        </h1>
-      </ion-text>
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
+      <ion-img src="assets/logo/logo.png"></ion-img>
+      <ion-button shape="round" color="light">
+        <ion-icon aria-hidden="true" name="settings-sharp" slot="icon-only"></ion-icon>
+      </ion-button>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
   <div class="introduction">
     <div class="introduction-content">
-      
-      <ion-text>
-        <h2>Organize seu dia com facilidade!</h2>
-      </ion-text>
-      <ion-text>
-        Descubra a eficiência de nossa lista de afazeres e mantenha suas tarefas sempre em dia.
-      </ion-text>
-      <div class="button-link ion-text-end">
-        <ion-button color="light">
-          <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-        </ion-button>
-      </div>
+      <ion-card class="color-primary">
+        <ion-card-header>
+          <ion-card-title>
+            Organize seu dia com facilidade!
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>        Descubra a eficiência de nossa lista de afazeres e mantenha suas tarefas sempre em dia.
+          </p>
+        </ion-card-content>
+        <div class="button-link ion-text-end">
+          <ion-button color="light">
+            <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
     </div>
   </div>
   <div class="tools">
     <div class="tools-content">
-      <ion-text>
-        <h2>Conheça nossas ferramentas</h2>
-      </ion-text>
+      <div class="tools-header">
+        <ion-text>
+          <h2>Conheça nossas ferramentas</h2>
+        </ion-text>
+        <ion-icon name="add-circle"></ion-icon>
+      </div>
       <div class="tools-cards">
-        <div class="card" id="pdf">
-          <ion-text>
-            <h4>Conversor de PDF</h4>
-          </ion-text>
-          <ion-text>
+        <ion-card class="color-primary">
+          <ion-card-header>
+            <ion-card-title>
+              Conversor de PDF
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
             <p>Converta imagens em PDF com apenas alguns toques.</p>
-          </ion-text>
+          </ion-card-content>
           <div class="button-link ion-text-end">
             <ion-button color="light">
               <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
             </ion-button>
           </div>
-        </div>
-        <div class="card" id="unidade">
-          <ion-text>
-            <h4>Conversor de Unidade</h4>
-          </ion-text>
-          <ion-text>
+        </ion-card>
+        <ion-card class="color-black">
+          <ion-card-header>
+            <ion-card-title>
+              Conversor de Unidade
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
             <p>Converta medidas de peso, volume, distância e muito mais.</p>
-          </ion-text>
+          </ion-card-content>
           <div class="button-link ion-text-end">
             <ion-button color="light">
               <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
             </ion-button>
           </div>
-        </div>
+        </ion-card>
       </div>
     </div>
   </div>
   <div class="recommendations">
     <div class="recommendations-content">
-      <ion-text>
-        <h2>Recomendações para você!</h2>
-      </ion-text>
-      <div class="recommendations-slide">
-        <div class="recommendations-slide-item">
-          <div class="slide-image">
-            <ion-img src="assets/home/to-do-list.png"></ion-img>
-          </div>
-          <div class="slide-description">
-            <ion-text>
-              <p>Organize suas tarefas</p>
-            </ion-text>
-          </div>
-          <div class="slide-dots">
-            <span></span>
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
+      <div class="recommendations-header">
+        <ion-text>
+          <h2>Recomendações para você!</h2>
+        </ion-text>
       </div>
-
+      <ion-card class="color-primary">
+        <ion-img src="assets/home/to-do-list.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>
+            Organize suas tarefas
+          </ion-card-title>
+        </ion-card-header>
+        <div class="dots">
+          <span></span>
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </ion-card>
     </div>
 
   </div>
