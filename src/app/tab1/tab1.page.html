@@ -10,6 +10,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div class="recommendations">
+    <div class="recommendations-content">
+      <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
+        <ion-card *ngIf="slideImages.length > 0">
+          <ion-img [src]="slideImages[currentIndex].image"></ion-img>
+          <ion-card-header>
+            <ion-card-title>
+              {{ slideImages[currentIndex].description }}
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <div class="dots">
+          <span *ngFor="let item of slideImages; let i = index" 
+                [class.active]="i === currentIndex" 
+                (click)="goToSlide(i)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="introduction">
     <div class="introduction-content">
       <ion-card class="color-primary">
@@ -72,28 +91,6 @@
       </div>
     </div>
   </div>
-  <div class="recommendations">
-    <div class="recommendations-content">
-      <div class="recommendations-header">
-        <ion-text>
-          <h2>Recomendações para você!</h2>
-        </ion-text>
-      </div>
-      <ion-card class="color-primary">
-        <ion-img src="assets/home/to-do-list.png"></ion-img>
-        <ion-card-header>
-          <ion-card-title>
-            Organize suas tarefas
-          </ion-card-title>
-        </ion-card-header>
-        <div class="dots">
-          <span></span>
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-        </div>
-      </ion-card>
-    </div>
 
-  </div>
+  
 </ion-content>
