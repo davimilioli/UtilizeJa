@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import necessary form modules
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Storage } from '@ionic/storage-angular';
@@ -62,6 +62,10 @@ export class NotepadPage implements OnInit {
     if (ev.detail.role === 'confirmar') {
       this.message = `Hello, ${ev.detail.data}!`;
     }
+  }
+
+  async openModal() {
+    this.modal.present();
   }
 
   async saveNote() {

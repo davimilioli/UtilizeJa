@@ -13,29 +13,33 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div *ngIf="notes && notes.length > 0; elseNotes">
-    <ion-card class="primary" *ngFor="let note of notes">
-      <ion-card-header>
-        <ion-card-title>
-          {{ note.titleNote }}
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        {{ note.annotationNote }}
-      </ion-card-content>
-      <div class="button-link ion-text-end">
-        <ion-button shape="round" color="light" id="present-alert" (click)="presentAlert(note.titleNote)">
-          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="light" (click)="editNote(note.titleNote)" >
-          <ion-icon slot="icon-only" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
-      </div>
-    </ion-card>
+  <div class="block-notFound"  *ngIf="!notes || notes.length === 0; else elseNotes">
+    <p class="ion-text-center">Você não possui nenhuma anotação</p>
+    <ion-button shape="default" (click)="openModal()" class="button">Criar</ion-button>
   </div>
   <ng-template #elseNotes>
-    <p class="ion-text-center">Você não possui nenhuma anotação</p>
+    <div *ngFor="let note of notes">
+      <ion-card class="primary">
+        <ion-card-header>
+          <ion-card-title>
+            {{ note.titleNote }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ note.annotationNote }}
+        </ion-card-content>
+        <div class="button-link ion-text-end">
+          <ion-button shape="round" color="light" id="present-alert" (click)="presentAlert(note.titleNote)">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="light" (click)="editNote(note.titleNote)" >
+            <ion-icon slot="icon-only" name="chevron-forward-sharp"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
+    </div>
   </ng-template>
+  
   <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
