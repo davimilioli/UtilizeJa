@@ -1,23 +1,63 @@
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-text class="ion-text-center">
-    <h1>Te apresentamos o</h1>
-  </ion-text>
-  <ion-img src="assets/logo/logo.png"></ion-img>
+<ion-content [fullscreen]="true" [ngClass]="{'ion-padding': !showSlide}">
+  <div id="background-expander" class="background-expander"></div>
 
-  <div class="cards-content">
-    <div class="card primary">
-      <ion-icon name="help-circle"></ion-icon>
-      <ion-text>
-        <p><strong>O UtilizeJá</strong> é o seu assistente pessoal multifuncional, projetado para  facilitar suas tarefas diárias de maneira rápida e eficiente. Com uma  interface intuitiva e uma ampla gama de ferramentas, o UtilizeJá é  indispensável para quem busca praticidade e conveniência no dia a dia.</p>
-      </ion-text>
+  <div class="introduction-header" [ngClass]="{'hidden': showSlide}" *ngIf="showSlide === false">
+    <ion-text class="ion-text-center">
+      <h1>Te apresentamos o</h1>
+    </ion-text>
+    <ion-img src="assets/logo/logo.png"></ion-img>
+    <div class="cards-content">
+      <div class="card primary">
+        <ion-icon name="help-circle"></ion-icon>
+        <ion-text>
+          <p><strong>O UtilizeJá</strong> é o seu assistente pessoal multifuncional, projetado para  facilitar suas tarefas diárias de maneira rápida e eficiente. Com uma  interface intuitiva e uma ampla gama de ferramentas, o UtilizeJá é  indispensável para quem busca praticidade e conveniência no dia a dia.</p>
+        </ion-text>
+      </div>
+      <div class="card peach">
+        <ion-icon name="help-circle"></ion-icon>
+        <ion-text>
+          <p>Interface amigável e intuitiva para todos os tipos de usuários.
+            Economize espaço no seu dispositivo ao substituir vários aplicativos por um único app multifuncional.  Estamos sempre aprimorando nossas ferramentas e adicionando novas funcionalidades.  </p>
+        </ion-text>
+      </div>
+      <ion-button shape="default" type="submit" color="secondary" (click)="start()">Começar</ion-button>
     </div>
-    <div class="card peach">
-      <ion-icon name="help-circle"></ion-icon>
-      <ion-text>
-        <p>Interface amigável e intuitiva para todos os tipos de usuários. 
-          Economize espaço no seu dispositivo ao substituir vários aplicativos por um único app multifuncional.  Estamos sempre aprimorando nossas ferramentas e adicionando novas funcionalidades.  </p>
-      </ion-text>
+  </div>
+
+  <div id="background-expander" class="background-expander"></div>
+  <div class="slide" [ngClass]="[currentSlideClass]" *ngIf="showSlide">
+    <div class="bar">
+      <span [class.active]="currentSlide === 0"></span>
+      <span [class.active]="currentSlide === 1"></span>
+      <span [class.active]="currentSlide === 2"></span>
     </div>
-    <ion-button shape="default" type="submit" color="secondary">Começar</ion-button>
+    <div class="slide-content">
+      <div *ngIf="currentSlide === 0">
+        <ion-text>
+          <p>Organize suas tarefas com nossa <strong>Lista de Afazeres</strong></p>
+        </ion-text>
+        <div class="slide-card">
+          <ion-img src="assets/home/to-do-list.png"></ion-img>
+        </div>
+      </div>
+      <div *ngIf="currentSlide === 1">
+        <ion-text>
+          <p>Faça suas anotações</p>
+        </ion-text>
+        <div class="slide-card">
+          <ion-img src="assets/home/note.png"></ion-img>
+        </div>
+      </div>
+      <div *ngIf="currentSlide === 2">
+        <ion-text>
+          <p>Defina um lembrete para sua tarefa</p>
+        </ion-text>
+        <div class="slide-card">
+          <ion-img src="assets/home/tools.png"></ion-img>
+        </div>
+      </div>
+    </div>
+    <ion-button shape="default" type="submit" color="secondary" fill="outline" (click)="jumpSlide()">Pular</ion-button>
+    <ion-button shape="default" type="submit" color="secondary" (click)="nextSlide()">Continuar</ion-button>
   </div>
 </ion-content>
