@@ -32,9 +32,10 @@ ion-card{
         .tag{
             display: flex;
             align-items: center;
+            text-decoration: none;
             gap: 4px;
             background-color: #212121;
-            padding: .1rem .4rem;
+            padding: .6rem 0.4rem;
             border-radius: var(--radius-custom);
             color: #FFF;
             margin: .3rem 0;

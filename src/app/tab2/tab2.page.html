@@ -69,10 +69,11 @@
     </ion-card-header>
   
     <ion-card-content>
-      <div class="tag">
+      <a class="tag" [routerLink]="['/notepad']">
         <ion-icon name="ellipse"></ion-icon>
         Bloco de Notas
-      </div>
+        <ion-icon name="caret-forward-outline"></ion-icon>
+      </a>
       <div class="tag">
         <ion-icon name="ellipse"></ion-icon>
         Calendário e Agenda
