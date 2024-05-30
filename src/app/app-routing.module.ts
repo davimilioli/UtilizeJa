@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'notepad',
     loadChildren: () => import('./pages/planejamento/notepad/notepad.module').then( m => m.NotepadPageModule)
   },
+  {
+    path: 'youtube-download',
+    loadChildren: () => import('./pages/ferramentas/youtube-download/youtube-download.module').then( m => m.YoutubeDownloadPageModule)
+  },
+
 ];
 @NgModule({
   imports: [
