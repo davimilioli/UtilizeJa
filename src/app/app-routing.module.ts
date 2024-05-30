@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'youtube-download',
     loadChildren: () => import('./pages/ferramentas/youtube-download/youtube-download.module').then( m => m.YoutubeDownloadPageModule)
+  },  {
+    path: 'conversor-pdf',
+    loadChildren: () => import('./pages/ferramentas/conversor-pdf/conversor-pdf.module').then( m => m.ConversorPdfPageModule)
   },
+
 
 ];
 @NgModule({

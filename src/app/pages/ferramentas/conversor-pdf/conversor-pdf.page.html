@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-button fill="clear" [routerLink]="['/tabs/tab2']">
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="secondary"></ion-icon>
+      </ion-button>
+      <ion-title class="ion-text-center">Conversor de PDF</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form (ngSubmit)="convertToPdf()">
+    <div class="attachments-content">
+      <div *ngFor="let image of images; let i = index" class="input-content">
+        <div class="attachment-file">
+          <ion-img [src]="image.dataUrl" *ngIf="image.dataUrl"></ion-img>
+        </div>
+        <ion-button shape="default" color="secondary" (click)="removeImage(i)">Excluir</ion-button>
+      </div>
+      <div class="input-content">
+        <div class="attachment-file">
+          <ion-label for="file">
+            <ion-icon name="document-outline"></ion-icon>
+            Anexar
+            <ion-input type="file" (change)="onFileSelected($event)" multiple></ion-input>
+          </ion-label>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <div class="form-actions-name-pdf" *ngIf="pdfOption === 'together'">
+        <ion-input [(ngModel)]="pdfName" name="pdfName" placeholder="Digite qual será o nome do PDF"></ion-input>
+      </div>
+      <div class="form-actions-content">
+        <div class="form-actions-format">
+          <ion-text class="ion-text-center">Escolha o formato do PDF</ion-text>
+          <div class="form-actions-options">
+            <ion-radio-group [(ngModel)]="pdfOption" name="pdfOption">
+              <ion-item>
+                <ion-label>Separados</ion-label>
+                <ion-radio slot="start" value="separate"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Juntos</ion-label>
+                <ion-radio slot="start" value="together"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </div>
+        </div>
+        <div class="form-actions-buttons">
+          <ion-button shape="default" type="submit">Converter</ion-button>
+          <ion-button shape="default" color="secondary" (click)="removeAllImages()">Excluir todas</ion-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>

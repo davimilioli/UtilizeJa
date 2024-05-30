@@ -1,0 +1,133 @@
+ion-header{
+    
+    .header-content{
+        padding: 0;
+        ion-title{
+            padding-left: 0;
+        }
+    }
+  
+}
+
+form{
+
+    .attachments-content{
+        display: flex;
+        flex-wrap: wrap;
+
+        .input-content{
+            position: relative;
+            width: 50%;
+            padding: .2rem;
+            
+            .attachment-file{
+                border: 1px solid #CCC;
+                border-radius: var(--radius-custom);
+                padding: 1rem;
+        
+                ion-label{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 5px;
+                    text-align: center;
+                    height: 65px;
+        
+                    ion-icon{
+                        font-size: 1.2rem;
+                    }
+                }
+        
+                ion-input{
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 1rem;
+                    --padding-start: 1rem;
+                    margin-bottom: 1rem;
+                    left: 0;
+                    font-size: 0;
+                    opacity: 0;
+                    --padding-start: 0;
+                }
+
+                ion-img{
+                    object-fit: cover;
+                    height: 65px;
+                }
+            }
+    
+        }
+    }
+
+    .form-actions{
+        position: fixed;
+        bottom: 5px;
+        width: 100%;
+        left: 0;
+        padding: 1rem;
+
+        .form-actions-name-pdf{
+
+            ion-input{
+                border: 1px solid #CCC;
+                border-radius: var(--radius-custom);
+                padding: 0 1rem;
+                --padding-start: 1rem;
+                margin-bottom: .4rem;
+            }
+        }
+
+        .form-actions-content{      
+
+            .form-actions-format{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #CCC;
+                padding: .5rem;
+                border-radius: var(--radius-custom);
+                margin-bottom: .4rem;
+        
+                ion-item{
+    
+                    --border-color: transparent;
+                }
+    
+                .form-actions-options{
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .form-actions-buttons{
+                    display: flex;
+                    gap: 5px;
+                }
+            
+            }
+        }
+
+        ion-radio-group{
+            display: flex;
+        }
+    }
+
+    ion-button{
+        --box-shadow: none;
+        --border-radius: var(--radius-custom);
+        height: 50px;
+        border-radius: 50% !important;
+        width: 100%;
+        text-transform: lowercase;
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: 1rem;
+        width: 100%;
+    }
+}
