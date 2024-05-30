@@ -29,6 +29,9 @@
       </div>
     </div>
     <div class="form-actions">
+      <ion-text *ngIf="showMessage">
+        <p class="ion-text-center">É necessário anexar a imagem</p>
+      </ion-text>
       <div class="form-actions-name-pdf" *ngIf="pdfOption === 'together'">
         <ion-input [(ngModel)]="pdfName" name="pdfName" placeholder="Digite qual será o nome do PDF"></ion-input>
       </div>

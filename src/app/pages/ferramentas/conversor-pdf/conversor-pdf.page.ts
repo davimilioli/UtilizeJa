@@ -10,6 +10,7 @@ export class ConversorPdfPage implements OnInit {
   images: { dataUrl: string, name: string }[] = [];
   pdfOption: string = 'separate';
   pdfName: string = ''; 
+  showMessage: boolean = false;
 
   constructor() { }
 
@@ -25,6 +26,7 @@ export class ConversorPdfPage implements OnInit {
           this.images.push({ dataUrl: e.target.result, name: file.name });
         };
         reader.readAsDataURL(file);
+        this.showMessage = false;
       }
     }
   }
@@ -93,6 +95,14 @@ export class ConversorPdfPage implements OnInit {
   }
 
   convertToPdf() {
+
+    if(this.images.length === 0){
+      this.showMessage = true;
+      return;
+    }
+
+    this.showMessage = false;
+
     if (this.pdfOption === 'together') {
       this.generateSinglePdf();
     } else {
