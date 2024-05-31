@@ -30,7 +30,7 @@
               </ion-button>
             </div>
           </div>
-          <div class="introduction-item secondary">
+          <div class="introduction-item">
             <div class="introduction-item-icon">
               <ion-icon name="checkmark-done-circle"></ion-icon>
             </div>
@@ -65,7 +65,7 @@
       <div class="recommendations-content">
         <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
           <ion-card *ngIf="slideImages.length > 0">
-            <ion-img [src]="slideImages[currentIndex].image"></ion-img>
+            <!-- <ion-img [src]="slideImages[currentIndex].image"></ion-img> -->
             <ion-card-header>
               <ion-card-title>
                 {{ slideImages[currentIndex].description }}

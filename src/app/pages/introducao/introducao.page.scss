@@ -16,7 +16,8 @@ ion-img{
         margin-top: 1rem;
         text-align: center;
         padding: 1rem;
-        border-radius: var(--radius-custom);
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
+        border: 1px solid var(--ion-color-primary);
         
         ion-icon{
             font-size: 1.5rem;
@@ -30,20 +31,12 @@ ion-img{
                 margin: 0;
             }
         }
-        
-        &.primary{
-            background-color: var(--ion-color-primary);
-        }
 
-        &.peach{
-            background-color: #ABBAEF;
-        }
     }
 }
 
 ion-button{
-    --box-shadow: none;
-    --border-radius: var(--radius-custom);
+    --box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
     --border-color: #4444;
     --border-style: solid;
     --border-width: 1px;
@@ -65,36 +58,41 @@ ion-button{
 }
 
 @keyframes expand-background {
-    from {
+    0% {
         width: 100px;
         height: 100px;
         border-radius: 50%;
         opacity: 0.5;
     }
-
-    to {
+    50% {
         width: 200%;
         height: 200%;
         border-radius: 0;
         opacity: 1;
     }
+    100% {
+        width: 200%;
+        height: 200%;
+        border-radius: 0;
+        opacity: 0;
+        background: none;
+    }
 }
-  
+
 .background-expander {
     position: fixed;
     top: 50%;
     left: 50%;
     width: 100px;
     height: 100px;
-    background-color: var(--ion-color-primary);
     transform: translate(-50%, -50%);
     z-index: -1;
-    transition: background-color 0.5s ease;
+    background-color: var(--ion-color-primary);
     opacity: 0;
+
 
     &.expanding-background {
         animation: expand-background 1s forwards;
-        opacity: 1;
     }
 
     &.fullscreen-background {
@@ -105,9 +103,10 @@ ion-button{
         transform: none;
         border-radius: 0;
         z-index: -1;
-        opacity: 1;
+        opacity: 0;
     }
 }
+
   
 .slide{
 
@@ -123,50 +122,6 @@ ion-button{
       transform: translateY(0);
     }
 
-    &.primary {
-        background-color: var(--ion-color-primary);
-        transition: background-color 0.5s ease;
-
-        ion-card-title {
-            color: #212121;
-            transition: color 0.5s ease;
-        }
-
-        ion-card-content {
-            p {
-                color: #212121;
-                transition: color 0.5s ease;
-            }
-        }
-    }
-
-    &.light-blue {
-        background-color: #ABBAEF;
-        transition: background-color 0.5s ease;
-    }
-
-    &.peach {
-        background-color: #F8A084;
-        transition: background-color 0.5s ease;
-    }
-
-    &.black {
-        background-color: #212121;
-        color: #FFF;
-        transition: background-color 0.5s ease, color 0.5s ease;
-
-        ion-card-title {
-            color: #FFF;
-            transition: color 0.5s ease;
-        }
-
-        .dots {
-            span {
-                background-color: var(--ion-color-primary);
-            }
-        }
-    }
-
     .bar {
         display: flex;
         align-items: center;
@@ -175,13 +130,12 @@ ion-button{
         
         span{
             display: block;
-            background-color: #21212175;
+            background-color: #CCC;
             height: 5px;
             width: 100%;
-            border-radius: var(--radius-custom);
 
             &.active{
-                background-color: var(--ion-color-secondary);
+                background-color: var(--ion-color-primary);
             }
         }
     }
@@ -196,9 +150,8 @@ ion-button{
         transition: background-color 0.5s ease;
 
         .slide-card{
-            background-color: #FFF2D1;
+            border: 1px solid var(--ion-color-primary);
             width: 100%;
-            border-radius: var(--radius-custom);
             padding: 1rem;
             height: 300px;
             min-width: 300px;
@@ -207,11 +160,15 @@ ion-button{
             align-items: center;
             flex-direction: column;
             flex-shrink: 0;
-            transition: background-color 0.5s ease;
+            justify-content: center;
 
-            ion-img{
-                width: 40%;
+            ion-icon{
+                font-size: 3rem;
             }
         }
+    }
+
+    ion-button{
+        --border-color: var(--ion-color-primary);
     }
 }

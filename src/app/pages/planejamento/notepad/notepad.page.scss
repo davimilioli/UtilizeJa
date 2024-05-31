@@ -67,8 +67,12 @@ form{
     }
 
     ion-button{
-        color: #fff;
+        color: var(--ion-color-primary);
         height: 50px;
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
+        width: 100%;
+        text-transform: lowercase;
+        text-transform: capitalize;
     }
 }
 
@@ -81,10 +85,8 @@ form{
     padding: 0 1rem;
 
     ion-button.button{
-        --box-shadow: none;
-        --border-radius: 12px;
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
         height: 50px;
-        border-radius: 50% !important;
         width: 100%;
         text-transform: lowercase;
         text-transform: capitalize;

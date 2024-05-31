@@ -5,7 +5,7 @@
     <ion-text class="ion-text-center">
       <h1>Te apresentamos o</h1>
     </ion-text>
-    <ion-img src="assets/logo/logo.png"></ion-img>
+    <ion-img src="assets/logo/logo.svg"></ion-img>
     <div class="cards-content">
       <div class="card primary">
         <ion-icon name="help-circle"></ion-icon>
@@ -20,7 +20,7 @@
             Economize espaço no seu dispositivo ao substituir vários aplicativos por um único app multifuncional.  Estamos sempre aprimorando nossas ferramentas e adicionando novas funcionalidades.  </p>
         </ion-text>
       </div>
-      <ion-button shape="default" type="submit" color="secondary" (click)="start()">Começar</ion-button>
+      <ion-button shape="default" type="submit" fill="outline" color="primary" (click)="start()">Começar</ion-button>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
           <p>Organize suas tarefas com nossa <strong>Lista de Afazeres</strong></p>
         </ion-text>
         <div class="slide-card">
-          <ion-img src="assets/home/to-do-list.png"></ion-img>
+          <ion-icon name="checkmark-done-circle"></ion-icon>
         </div>
       </div>
       <div *ngIf="currentSlide === 1">
@@ -45,7 +45,7 @@
           <p>Faça suas anotações</p>
         </ion-text>
         <div class="slide-card">
-          <ion-img src="assets/home/note.png"></ion-img>
+          <ion-icon name="pencil"></ion-icon>
         </div>
       </div>
       <div *ngIf="currentSlide === 2">
@@ -53,11 +53,11 @@
           <p>Defina um lembrete para sua tarefa</p>
         </ion-text>
         <div class="slide-card">
-          <ion-img src="assets/home/tools.png"></ion-img>
+          <ion-icon name="notifications"></ion-icon>
         </div>
       </div>
     </div>
-    <ion-button shape="default" type="submit" color="secondary" fill="outline" (click)="jumpSlide()">Pular</ion-button>
-    <ion-button shape="default" type="submit" color="secondary" (click)="nextSlide()">Continuar</ion-button>
+    <ion-button shape="default" type="submit" fill="outline" (click)="jumpSlide()">Pular</ion-button>
+    <ion-button shape="default" type="submit" fill="outline" (click)="nextSlide()">Continuar</ion-button>
   </div>
 </ion-content>

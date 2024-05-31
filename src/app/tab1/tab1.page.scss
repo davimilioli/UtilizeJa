@@ -18,8 +18,8 @@ ion-header{
                     gap: 12px;
                     margin-bottom: 1rem;
                     justify-content: space-between;
-    
                     border: 1px solid #000;
+                    box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
     
                     .introduction-item-icon{
                         border-radius: 12px;
@@ -80,16 +80,15 @@ ion-header{
             }
     
             .recommendations-slide {
-    
-                background-color: var(--ion-color-primary);
-    
+
+                border: 1px solid var(--ion-color-primary);
+                box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
                 ion-card {
-                    height: 200px;
                     box-shadow: none;
                     text-align: center;
                     background: none;
                     transition: transform 0.5s ease;
-                    color: #FFF;
+                    color: var(--ion-color-primary);
     
                     ion-img {
                         width: 35%;
@@ -104,7 +103,7 @@ ion-header{
                         text-align: center;
                         font-size: 1rem;
                         transition: color 0.5s ease;
-                        color: #FFF;
+                        color: var(--ion-color-primary);
                     }
     
                     ion-card-content {
@@ -130,12 +129,12 @@ ion-header{
                         display: block;
                         height: 12px;
                         width: 12px;
-                        background-color: #212121;
+                        background-color: var(--ion-color-primary);
                         border-radius: 10px;
                         transition: background-color 0.5s ease;
     
                         &.active {
-                            background-color: #FFF;
+                            background-color: #CCC;
                         }
                     }
                 }
