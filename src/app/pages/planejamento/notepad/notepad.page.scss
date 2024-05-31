@@ -55,11 +55,11 @@ form{
     padding: 0 1rem;
 
     ion-input, ion-textarea{
-        border: 1px solid #CCC;
+        border: 1px solid var(--ion-color-primary);
         padding: 0 1rem;
         --padding-start: 1rem;
         margin-bottom: 1rem;
-
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
     }
     
     ion-textarea{
@@ -73,6 +73,9 @@ form{
         width: 100%;
         text-transform: lowercase;
         text-transform: capitalize;
+        --border-width: 1px;
+        font-weight: 400;
+        --border-radius: 0;
     }
 }
 
