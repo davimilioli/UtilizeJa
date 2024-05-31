@@ -16,7 +16,7 @@
         <div class="attachment-file">
           <ion-img [src]="image.dataUrl" *ngIf="image.dataUrl"></ion-img>
         </div>
-        <ion-button shape="default" color="secondary" (click)="removeImage(i)">Excluir</ion-button>
+        <ion-button shape="default" color="primary" fill="outline" (click)="removeImage(i)">Excluir</ion-button>
       </div>
       <div class="input-content">
         <div class="attachment-file">
@@ -35,7 +35,7 @@
       <div class="form-actions-name-pdf" *ngIf="pdfOption === 'together'">
         <ion-input [(ngModel)]="pdfName" name="pdfName" placeholder="Digite qual será o nome do PDF"></ion-input>
       </div>
-      <div class="form-actions-content">
+      <div class="form-actions-content" *ngIf="images.length >= 1">
         <div class="form-actions-format">
           <ion-text class="ion-text-center">Escolha o formato do PDF</ion-text>
           <div class="form-actions-options">
@@ -52,8 +52,8 @@
           </div>
         </div>
         <div class="form-actions-buttons">
-          <ion-button shape="default" type="submit">Converter</ion-button>
-          <ion-button class="outline" shape="default" fill="outline" (click)="removeAllImages()">Excluir todas</ion-button>
+          <ion-button shape="default" type="submit" fill="outline" color="primary">Converter</ion-button>
+          <ion-button class="outline" shape="default" fill="outline" (click)="removeAllImages()" *ngIf="images.length > 1" >Excluir todas</ion-button>
         </div>
       </div>
     </div>
