@@ -20,6 +20,46 @@
       <h1>Rafael Ornelas</h1>
     </ion-text>
   </div>
-
-
+  <div class="report">
+    <div class="report-content">
+      <div class="report-title">
+        <ion-text>
+          <h2>Histórico de Uso Semanal</h2>
+        </ion-text>
+        <ion-button color="primary" fill="clear">
+          <ion-icon slot="icon-only" name="share-social"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="report-list" *ngIf="historic">
+        <div class="report-list-item" *ngFor="let item of historic">
+          <div class="report-bar">
+            <div class="report-bar-content" [ngStyle]="{'height': item.animated ? item.progress + '%' : '0'}" [class.animated]="item.animated">
+              {{ item.progress }}%
+            </div>
+          </div>
+          <ion-text class="ion-text-center">{{ item.day }}</ion-text>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons-config">
+    <div class="buttons-config-content">
+      <div class="buttons-config-list">
+        <a>
+          <div class="button-config-label">
+            <ion-icon slot="start" name="settings"></ion-icon>
+            Configurações
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </a>
+        <a>
+          <div class="button-config-label">
+            <ion-icon slot="start" name="help-outline"></ion-icon>
+            Sobre
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </div>
 </ion-content>
