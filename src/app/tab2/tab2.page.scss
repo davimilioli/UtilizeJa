@@ -1,49 +1,54 @@
-ion-card{
-    border-radius: var(--radius-custom);
-    box-shadow: none;
-    margin-bottom: 1rem;
-    
-    &.color-primary{
-        background-color: var(--ion-color-primary);
-    }
-
-    &.color-light-blue{
-        background-color: #ABBAEF;
-    }
-
-    
-    &.color-peach{
-        background-color: #F8A084;
-    }
-
-    ion-card-title{
+.services{
+    padding: 0 1rem;
+    .services-content{
         display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 1.25rem;
-    }
-
-    ion-card-content{
-        display: flex;
-        align-items: center;
+        gap: 10px;
         flex-wrap: wrap;
-        gap: .2rem;
-
-        .tag{
+        
+        .services-item{
+            padding: 1rem;
+            border: 1px solid var(--ion-color-primary);
             display: flex;
+            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            max-width: 50%;
+            width: 48%;
             text-decoration: none;
-            gap: 4px;
-            background-color: #212121;
-            padding: .6rem 0.4rem;
-            border-radius: var(--radius-custom);
-            color: #FFF;
-            margin: .3rem 0;
-            font-size: 12px;
-        }
-    }
 
-    .button-link{
-        padding: 0 1rem .5rem 1rem;
+
+            .services-item-icon{
+                ion-icon{
+                    font-size: 2rem;
+                }
+            }
+
+            .service-item-title{
+                ion-text h4{
+                    font-size: 1rem;
+                    text-align: center;
+                }
+            }
+
+            &.primary{
+                background-color: var(--ion-color-primary);
+
+                .services-item-icon{
+                    ion-icon{
+                        font-size: 2rem;
+                        color: #FFF;
+                    }
+                }
+
+
+                .service-item-title{
+                    ion-text h4{
+                        font-size: 1rem;
+                        color: #FFF;
+                    }
+                }
+                
+            }
+        }
     }
 }

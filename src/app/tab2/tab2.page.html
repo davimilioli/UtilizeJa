@@ -1,95 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header-content">
-      <ion-img src="assets/logo/logo.png"></ion-img>
-      <ion-button shape="round" color="light">
-        <ion-icon aria-hidden="true" name="settings-sharp" slot="icon-only"></ion-icon>
-      </ion-button>
+      <div class="logo">
+        <ion-icon name="close-outline"></ion-icon>
+        UtilizeJá
+      </div>
+      <div class="line"></div>
+      <div class="avatar"></div>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card class="color-primary">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon name="build"></ion-icon>
-        Ferramentas
-      </ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <a class="tag" [routerLink]="['/conversor-pdf']">
-        <ion-icon name="ellipse"></ion-icon>
-        Conversor de PDF
-        <ion-icon name="caret-forward-outline"></ion-icon>
+  <div class="services">
+    <div class=services-content>
+      <a class="services-item" [routerLink]="['/conversor-pdf']">
+        <div class="services-item-icon">
+          <ion-icon name="document"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>Conversor de PDF</h4>
+          </ion-text>
+        </div>
       </a>
-      <div class="tag">
-        <ion-icon name="ellipse"></ion-icon>
-        Conversor de Unidade
-      </div>
-      <a class="tag" [routerLink]="['/youtube-download']">
-        <ion-icon name="ellipse"></ion-icon>
-        Baixar Vídeo e Áudio do Youtube
-        <ion-icon name="caret-forward-outline"></ion-icon>
+      <a class="services-item primary" [routerLink]="['/notepad']">
+        <div class="services-item-icon">
+          <ion-icon name="document"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>Bloco de notas</h4>
+          </ion-text>
+        </div>
       </a>
-    </ion-card-content>
-<!--     <div class="button-link ion-text-end">
-      <ion-button color="light">
-        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-      </ion-button>
-    </div> -->
-  </ion-card>
-
-  <ion-card class="color-light-blue">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon name="location"></ion-icon>
-        Localização
-      </ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <div class="tag">
-        <ion-icon name="ellipse"></ion-icon>
-        Consulta de CEP
-      </div>
-    </ion-card-content>
-<!--     <div class="button-link ion-text-end">
-      <ion-button color="light">
-        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-      </ion-button>
-    </div> -->
-  </ion-card>
-
-  <ion-card class="color-peach">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon name="calendar-clear"></ion-icon>
-        Planejamento
-      </ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <a class="tag" [routerLink]="['/notepad']">
-        <ion-icon name="ellipse"></ion-icon>
-        Bloco de Notas
-        <ion-icon name="caret-forward-outline"></ion-icon>
+      <a class="services-item primary">
+        <div class="services-item-icon">
+          <ion-icon name="document"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>Calendário e Agenda</h4>
+          </ion-text>
+        </div>
       </a>
-      <div class="tag">
-        <ion-icon name="ellipse"></ion-icon>
-        Calendário e Agenda
-      </div>
-      <div class="tag">
-        <ion-icon name="ellipse"></ion-icon>
-        Lista de Tarefas
-      </div>
-    </ion-card-content>
-<!--     <div class="button-link ion-text-end">
-      <ion-button color="light">
-        <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-      </ion-button>
-    </div> -->
-  </ion-card>
+      <a class="services-item">
+        <div class="services-item-icon">
+          <ion-icon name="document"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>Consultar CEP</h4>
+          </ion-text>
+        </div>
+      </a>
+      <a class="services-item">
+        <div class="services-item-icon">
+          <ion-icon name="document"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>Conversor de PDF</h4>
+          </ion-text>
+        </div>
+      </a>
+    </div>
+  </div>
 
 </ion-content>

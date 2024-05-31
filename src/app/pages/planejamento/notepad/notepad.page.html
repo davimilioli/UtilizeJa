@@ -1,18 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header-content">
-      <ion-button fill="clear" [routerLink]="['/tabs/tab2']" >
-        <ion-icon slot="icon-only" name="chevron-back-outline" color="secondary"></ion-icon>
+      <ion-button shape="round" fill="clear" [routerLink]="['/tabs/tab2']" >
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
       </ion-button>
       <ion-title class="ion-text-center">Bloco de Notas</ion-title>
       <ion-button shape="round" fill="clear" id="open-modal">
-        <ion-icon slot="icon-only" name="add-outline" color="secondary" ></ion-icon>
+        <ion-icon slot="icon-only" name="add-outline"  color="primary"></ion-icon>
       </ion-button>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
   <div class="block-notFound"  *ngIf="!notes || notes.length === 0; else elseNotes">
     <p class="ion-text-center">Você não possui nenhuma anotação</p>
     <ion-button shape="default" (click)="openModal()" class="button">Criar</ion-button>
@@ -29,11 +29,11 @@
           {{ note.annotationNote }}
         </ion-card-content>
         <div class="button-link ion-text-end">
-          <ion-button shape="round" color="light" id="present-alert" (click)="presentAlert(note.titleNote)">
-            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          <ion-button shape="round" fill="clear" id="present-alert" (click)="presentAlert(note.titleNote)">
+            <ion-icon slot="icon-only" name="close-outline" color="primary"></ion-icon>
           </ion-button>
-          <ion-button color="light" (click)="editNote(note.titleNote)" >
-            <ion-icon slot="icon-only" name="chevron-forward-sharp"></ion-icon>
+          <ion-button shape="round" fill="clear" (click)="editNote(note.titleNote)" >
+            <ion-icon slot="icon-only" name="chevron-forward-sharp" color="primary"></ion-icon>
           </ion-button>
         </div>
       </ion-card>
@@ -49,7 +49,7 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content class="ion-padding">
+      <ion-content>
         <form (ngSubmit)="saveNote()" [formGroup]="noteForm">
           <ion-input labelPlacement="stacked" placeholder="Titulo" formControlName="titleNote"></ion-input>
           <div *ngIf="noteForm.get('titleNote')?.errors?.['required'] && (noteForm.get('titleNote')?.dirty || noteForm.get('titleNote')?.touched)">
@@ -73,7 +73,7 @@
               <p>A anotação deve ter no máximo 250 caracteres.</p>
             </ion-text>
           </div>
-          <ion-button shape="default" type="submit" [disabled]="!noteForm.valid">Salvar</ion-button>
+          <ion-button shape="default" type="submit" expand="full" [disabled]="!noteForm.valid">Salvar</ion-button>
         </form>
       </ion-content>
     </ng-template>

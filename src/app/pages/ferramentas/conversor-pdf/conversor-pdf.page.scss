@@ -130,5 +130,10 @@ form{
         font-weight: 400;
         font-size: 1rem;
         width: 100%;
+        color: #fff;
+
+        &.outline{
+            color: var(--ion-color-primary)
+        }
     }
 }

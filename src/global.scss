@@ -39,10 +39,10 @@
 /* @import "@ionic/angular/css/palettes/dark.system.css"; */
 
 *{
-    font-family: "Poppins", sans-serif;;
+    font-family: "Palanquin", sans-serif;;
 }
 
-ion-header{
+/* ion-header{
     --border-style: none;
     .header-content{
         display: flex;
@@ -72,6 +72,50 @@ ion-header{
             }
         }
     }
+} */
+
+
+ion-header {
+    padding: 1rem;
+    .header-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .logo{
+            color: var(--ion-color-primary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            font-size: 1.2rem;
+
+            ion-icon{
+                background-color: var(--ion-color-primary);
+                color: #fff;
+                border-radius: 50%;
+                align-items: center;
+                font-size: 1.2rem;
+                padding: .2rem;
+                font-weight: bold;
+            }
+        }
+
+        .line{
+            height: 1px;
+            width: 100%;
+            display: block;
+            background-color: var(--ion-color-primary);
+        }
+
+        .avatar{
+            height: 45px;
+            width: 90px;
+            display: block;
+            background-color: var(--ion-color-primary);
+            border-radius: 50%;
+        }
+    }
 }
 
 .header-md{
@@ -91,8 +135,9 @@ ion-toolbar{
     }
 }
 
-.button-link{
+/* .button-link{
     ion-button{
         --border-radius: 50%
     }
 }
+ */

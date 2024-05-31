@@ -15,17 +15,17 @@ export class Tab1Page {
     {
       image: '',
       description: 'Organize suas tarefas',
-      color: 'primary'
+      color: ''
     },
     {
       image: '',
       description: 'Anote coisas importantes',
-      color: 'light-blue'
+      color: ''
     },
     {
       image: '',
       description: 'Planeje sua semana',
-      color: 'peach'
+      color: ''
     }
   ];
 

@@ -1,93 +1,83 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header-content">
-      <ion-img src="assets/logo/logo.png"></ion-img>
-      <ion-button shape="round" color="light">
-        <ion-icon aria-hidden="true" name="settings-sharp" slot="icon-only"></ion-icon>
-      </ion-button>
+      <div class="logo">
+        <ion-icon name="close-outline"></ion-icon>
+        UtilizeJá
+      </div>
+      <div class="line"></div>
+      <div class="avatar"></div>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="recommendations">
-    <div class="recommendations-content">
-      <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
-        <ion-card *ngIf="slideImages.length > 0">
-          <ion-img [src]="slideImages[currentIndex].image"></ion-img>
-          <ion-card-header>
-            <ion-card-title>
-              {{ slideImages[currentIndex].description }}
-            </ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <div class="dots">
-          <span *ngFor="let item of slideImages; let i = index" 
-                [class.active]="i === currentIndex" 
-                (click)="goToSlide(i)"></span>
+  <div class="home">
+    <div class="introduction">
+      <div class="introduction-content">
+        <div class="introduction-services">
+          <div class="introduction-item primary">
+            <div class="introduction-item-icon">
+              <ion-icon name="document"></ion-icon>
+            </div>
+            <div class="introduction-description">
+              <h4>Conversor de PDF</h4>
+              <p>Conversões em PDF</p>
+            </div>
+            <div class="introduction-direct">
+              <ion-button shape="round" fill="clear">
+                <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+          <div class="introduction-item secondary">
+            <div class="introduction-item-icon">
+              <ion-icon name="checkmark-done-circle"></ion-icon>
+            </div>
+            <div class="introduction-description">
+              <h4>Lista de Afazeres</h4>
+              <p>Organize suas tarefas</p>
+            </div>
+            <div class="introduction-direct">
+              <ion-button shape="round" fill="clear">
+                <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+          <div class="introduction-item tertiary">
+            <div class="introduction-item-icon">
+              <ion-icon name="pencil"></ion-icon>
+            </div>
+            <div class="introduction-description">
+              <h4>Bloco de notas</h4>
+              <p>Faça suas anotações</p>
+            </div>
+            <div class="introduction-direct">
+              <ion-button shape="round" fill="clear">
+                <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="introduction">
-    <div class="introduction-content">
-      <ion-card class="color-primary">
-        <ion-card-header>
-          <ion-card-title>
-            Organize seu dia com facilidade!
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>        Descubra a eficiência de nossa lista de afazeres e mantenha suas tarefas sempre em dia.
-          </p>
-        </ion-card-content>
-        <div class="button-link ion-text-end">
-          <ion-button color="light">
-            <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-          </ion-button>
+    <div class="recommendations">
+      <div class="recommendations-content">
+        <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
+          <ion-card *ngIf="slideImages.length > 0">
+            <ion-img [src]="slideImages[currentIndex].image"></ion-img>
+            <ion-card-header>
+              <ion-card-title>
+                {{ slideImages[currentIndex].description }}
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+          <div class="dots">
+            <span *ngFor="let item of slideImages; let i = index"
+                  [class.active]="i === currentIndex"
+                  (click)="goToSlide(i)"></span>
+          </div>
         </div>
-      </ion-card>
-    </div>
-  </div>
-  <div class="tools">
-    <div class="tools-content">
-      <div class="tools-header">
-        <ion-text>
-          <h2>Conheça nossas ferramentas</h2>
-        </ion-text>
-        <ion-icon name="add-circle"></ion-icon>
-      </div>
-      <div class="tools-cards">
-        <ion-card class="color-primary">
-          <ion-card-header>
-            <ion-card-title>
-              Conversor de PDF
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>Converta imagens em PDF com apenas alguns toques.</p>
-          </ion-card-content>
-          <div class="button-link ion-text-end">
-            <ion-button color="light">
-              <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-            </ion-button>
-          </div>
-        </ion-card>
-        <ion-card class="color-black">
-          <ion-card-header>
-            <ion-card-title>
-              Conversor de Unidade
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>Converta medidas de peso, volume, distância e muito mais.</p>
-          </ion-card-content>
-          <div class="button-link ion-text-end">
-            <ion-button color="light">
-              <ion-icon slot="icon-only" name="chevron-forward-sharp" ></ion-icon>
-            </ion-button>
-          </div>
-        </ion-card>
       </div>
     </div>
   </div>

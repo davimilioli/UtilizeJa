@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="header-content">
       <ion-button fill="clear" [routerLink]="['/tabs/tab2']">
-        <ion-icon slot="icon-only" name="chevron-back-outline" color="secondary"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
       </ion-button>
       <ion-title class="ion-text-center">Conversor de PDF</ion-title>
     </div>
@@ -53,7 +53,7 @@
         </div>
         <div class="form-actions-buttons">
           <ion-button shape="default" type="submit">Converter</ion-button>
-          <ion-button shape="default" color="secondary" (click)="removeAllImages()">Excluir todas</ion-button>
+          <ion-button class="outline" shape="default" fill="outline" (click)="removeAllImages()">Excluir todas</ion-button>
         </div>
       </div>
     </div>
