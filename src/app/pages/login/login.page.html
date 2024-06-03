@@ -26,26 +26,21 @@
       </ion-button>
     </ion-input>
     <ion-button shape="default" fill="outline"  type="submit" id="button-login">Fazer Login</ion-button>
+    <div class="loading" *ngIf="loading">
+      <ion-spinner name="circular"></ion-spinner>
+    </div>
   </form>
   <div class="text-other">
     <p>OU</p>
   </div>
-
   <div class="login-google">
-    <div *ngIf="userData | async as user; else elseLoginButton">
-      <p>Nome: {{ user.displayName }}</p>
-      <p>Email: {{ user.email }}</p>
-      <ion-button size="small" fill="outline" (click)="authLogoutGoogle()">
-        <ion-icon name="exit-outline"></ion-icon>
-        Sair
-      </ion-button>
-    </div>
-    <ng-template #elseLoginButton>
-        <ion-button size="small" fill="outline" (click)="authLoginGoogle()">
-          <ion-icon name="logo-google"></ion-icon>
-          Faça login com o Google
-        </ion-button>
-      </ng-template>
+    <ion-button size="small" fill="outline" (click)="loginFirebase()">
+      <ion-icon name="logo-google"></ion-icon>
+      Faça login com o Google
+    </ion-button>
   </div>
+
+
+  
   <p class="text-direct-form ion-text-center">Não possui cadastro? <a [routerLink]="['/cadastro']">Cadastrar</a></p>
 </ion-content>

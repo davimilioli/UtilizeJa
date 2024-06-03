@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
+
 
 interface HistoricItem {
   day: string;
@@ -13,6 +17,10 @@ interface HistoricItem {
 })
 
 export class Tab4Page {
+  user: firebase.User | null = null;
+
+  constructor(private authService: AuthService, private router: Router) {}
+
 
   historic: HistoricItem[] = [
     { day: 'Seg', progress: 25 },
@@ -24,13 +32,35 @@ export class Tab4Page {
     { day: 'Dom', progress: 100 }
   ];
 
+  ngOnInit(){
+    this.initializeUser();
+  } 
+
+ async initializeUser() {
+    try {
+      this.user = await this.authService.initializeUser();
+      console.log(this.user)
+    } catch (error) {
+      console.error('Erro ao inicializar usuário', error);
+    }
+  } 
+  
+
   ngAfterViewInit() {
     setTimeout(() => {
       this.historic = this.historic.map((item: HistoricItem) => ({ ...item, animated: true }));
-      console.log(this.historic);
     }, 1000);
   }
 
-  constructor() {}
+  async logoutFirebase(){
+    try {
+      await this.authService.logoutAuthFirebase();
+      this.user = null;
+      this.router.navigate(['/login']);
+    } catch(error: any) {
+      console.error('Erro ao fazer logout', error);
+    }
+  }
+  
 
 }

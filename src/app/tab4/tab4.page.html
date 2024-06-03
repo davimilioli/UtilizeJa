@@ -12,14 +12,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="avatar">
+  <div class="avatar" *ngIf="user; else elseUser">
     <ion-avatar>
-      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <img [src]="user.photoURL" />
     </ion-avatar>
     <ion-text class="ion-text-center">
-      <h1>Rafael Ornelas</h1>
+      <h1> {{ user.displayName }} </h1>
     </ion-text>
   </div>
+  <ng-template #elseUser>
+    <div class="avatar">
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-text class="ion-text-center">
+        <h1> -- </h1>
+      </ion-text>
+    </div>
+  </ng-template>
+  
   <div class="report">
     <div class="report-content">
       <div class="report-title">
@@ -56,6 +67,13 @@
           <div class="button-config-label">
             <ion-icon slot="start" name="help-outline"></ion-icon>
             Sobre
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </a>
+        <a (click)="logoutFirebase()">
+          <div class="button-config-label">
+            <ion-icon slot="start" name="exit-outline"></ion-icon>
+            Sair
           </div>
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
         </a>

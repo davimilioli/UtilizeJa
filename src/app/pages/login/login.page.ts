@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +8,30 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  userData: Observable<firebase.User | null>;
+  loading: boolean = false;
 
-  constructor(public auth: AngularFireAuth) { 
+  constructor(public authService: AuthService, private router: Router) { }
 
-    this.userData = this.auth.authState;
+  ngOnInit() {}
 
-    this.userData.subscribe((user) => {
-      console.log(user)
-    })
+  async loginFirebase(){
+    try{
+      this.loading = true;
+      await this.authService.loginAuthFirebase();
+      this.router.navigate(['/tabs/tab4']);
+    } catch(error: any) {
+      console.error('Deu erro');
+    } finally {
+      this.loading = false;
+    }
   }
 
-  ngOnInit() {
+  async logoutFirebase(){
+    try{
+      await this.authService.logoutAuthFirebase();
+    } catch(error: any) {
+      console.error('Erro ao da logout')
+    }
   }
 
-  authLoginGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-
-  authLogoutGoogle(){
-    this.auth.signOut();
-  }
 }
