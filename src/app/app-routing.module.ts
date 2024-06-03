@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-const loginActivated = true
-
 const routes: Routes = [
    {
     path: '',
@@ -33,9 +31,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/planejamento/to-do-list/to-do-list.module').then( m => m.ToDoListPageModule)
   },
 
-
-
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
