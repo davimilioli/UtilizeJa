@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+const loginActivated = true
+
 const routes: Routes = [
-  {
+   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
+  }, 
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -25,7 +27,8 @@ const routes: Routes = [
   {
     path: 'conversor-pdf',
     loadChildren: () => import('./pages/ferramentas/conversor-pdf/conversor-pdf.module').then( m => m.ConversorPdfPageModule)
-  },  {
+  },
+  {
     path: 'to-do-list',
     loadChildren: () => import('./pages/planejamento/to-do-list/to-do-list.module').then( m => m.ToDoListPageModule)
   },
