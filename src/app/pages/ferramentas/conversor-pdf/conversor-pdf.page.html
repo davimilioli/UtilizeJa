@@ -33,11 +33,13 @@
       <ion-text *ngIf="showMessage">
         <p class="ion-text-center">É necessário anexar a imagem</p>
       </ion-text>
-      <div class="form-actions-name-pdf" *ngIf="pdfOption === 'together'">
-        <ion-input [(ngModel)]="pdfName" name="pdfName" placeholder="Digite qual será o nome do PDF"></ion-input>
+      <div *ngIf="images.length >= 2">
+        <div class="form-actions-name-pdf" *ngIf="pdfOption === 'together'" >
+          <ion-input [(ngModel)]="pdfName" name="pdfName" placeholder="Digite qual será o nome do PDF"></ion-input>
+        </div>
       </div>
       <div class="form-actions-content" *ngIf="images.length >= 1">
-        <div class="form-actions-format">
+        <div class="form-actions-format" *ngIf="images.length >= 2">
           <ion-text class="ion-text-center">Escolha o formato do PDF</ion-text>
           <div class="form-actions-options">
             <ion-radio-group [(ngModel)]="pdfOption" name="pdfOption">
