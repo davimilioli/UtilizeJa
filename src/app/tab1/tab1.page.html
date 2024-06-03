@@ -16,7 +16,7 @@
     <div class="introduction">
       <div class="introduction-content">
         <div class="introduction-services">
-          <div class="introduction-item primary">
+          <a class="introduction-item" [routerLink]="['/conversor-pdf']">
             <div class="introduction-item-icon">
               <ion-icon name="document"></ion-icon>
             </div>
@@ -29,8 +29,8 @@
                 <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
               </ion-button>
             </div>
-          </div>
-          <div class="introduction-item">
+          </a>
+          <a class="introduction-item" [routerLink]="['/']">
             <div class="introduction-item-icon">
               <ion-icon name="checkmark-done-circle"></ion-icon>
             </div>
@@ -43,8 +43,8 @@
                 <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
               </ion-button>
             </div>
-          </div>
-          <div class="introduction-item tertiary">
+          </a>
+          <a class="introduction-item tertiary" [routerLink]="['/notepad']">
             <div class="introduction-item-icon">
               <ion-icon name="pencil"></ion-icon>
             </div>
@@ -57,29 +57,12 @@
                 <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
               </ion-button>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-    <div class="recommendations">
-      <div class="recommendations-content">
-        <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
-          <ion-card *ngIf="slideImages.length > 0">
-            <!-- <ion-img [src]="slideImages[currentIndex].image"></ion-img> -->
-            <ion-card-header>
-              <ion-card-title>
-                {{ slideImages[currentIndex].description }}
-              </ion-card-title>
-            </ion-card-header>
-          </ion-card>
-          <div class="dots">
-            <span *ngFor="let item of slideImages; let i = index"
-                  [class.active]="i === currentIndex"
-                  (click)="goToSlide(i)"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-slide></app-slide>
+
   </div>
 
   

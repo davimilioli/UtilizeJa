@@ -1,0 +1,17 @@
+<div class="recommendations">
+  <div class="recommendations-content">
+    <div class="recommendations-slide" [ngClass]="slideImages[currentIndex].color">
+      <ion-card *ngIf="slideImages.length > 0">
+        <!-- <ion-img [src]="slideImages[currentIndex].image"></ion-img> -->
+        <ion-card-header>
+          <ion-card-title>
+            {{ slideImages[currentIndex].description }}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <div class="dots">
+        <span *ngFor="let item of slideImages; let i = index" [class.active]="i === currentIndex" (click)="goToSlide(i)"></span>
+      </div>
+    </div>
+  </div>
+</div>
