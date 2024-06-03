@@ -30,12 +30,22 @@
   <div class="text-other">
     <p>OU</p>
   </div>
+
   <div class="login-google">
-    <ion-button size="small" 
-    fill="outline">
-      <ion-icon name="logo-google"></ion-icon>
-      Faça login com o Google
-    </ion-button>
+    <div *ngIf="userData | async as user; else elseLoginButton">
+      <p>Nome: {{ user.displayName }}</p>
+      <p>Email: {{ user.email }}</p>
+      <ion-button size="small" fill="outline" (click)="authLogoutGoogle()">
+        <ion-icon name="exit-outline"></ion-icon>
+        Sair
+      </ion-button>
+    </div>
+    <ng-template #elseLoginButton>
+        <ion-button size="small" fill="outline" (click)="authLoginGoogle()">
+          <ion-icon name="logo-google"></ion-icon>
+          Faça login com o Google
+        </ion-button>
+      </ng-template>
   </div>
   <p class="text-direct-form ion-text-center">Não possui cadastro? <a [routerLink]="['/cadastro']">Cadastrar</a></p>
 </ion-content>
