@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'conversor-pdf',
     loadChildren: () => import('./pages/ferramentas/conversor-pdf/conversor-pdf.module').then( m => m.ConversorPdfPageModule)
+  },  {
+    path: 'to-do-list',
+    loadChildren: () => import('./pages/planejamento/to-do-list/to-do-list.module').then( m => m.ToDoListPageModule)
   },
+
 
 
 ];

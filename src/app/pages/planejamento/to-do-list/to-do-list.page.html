@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-button shape="round" fill="clear" [routerLink]="['/tabs/tab2']" >
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-title class="ion-text-center">Lista de Afazeres</ion-title>
+      <ion-button shape="round" fill="clear" id="open-modal">
+        <ion-icon slot="icon-only" name="add-outline"  color="primary"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="toDoList">
+    <div class="toDoList-content">
+      <div class="toDoList-items">
+        <ion-list>
+          <ion-item *ngFor="let task of tasks; let i = index">
+            <ion-checkbox name="title-checkbox" labelPlacement="end" justify="start" [(ngModel)]="task.completed" [ngClass]="{'completed': task.completed}" (click)="toggleTaskCompleted(task)">
+              <ion-label>{{ task.title }}</ion-label>
+            </ion-checkbox>
+            <ion-button color="primary" fill="clear" (click)="presentAlert(task.title)">
+              <ion-icon slot="icon-only" name="close-outline" color="primary"></ion-icon>
+            </ion-button>
+            <ion-button color="primary" fill="clear" (click)="editTask(task)">
+              <ion-icon slot="icon-only" name="chevron-forward-sharp" color="primary"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form (ngSubmit)="saveToDo()" [formGroup]="toDoForm">
+          <ion-input 
+            labelPlacement="stacked" 
+            placeholder="O que iremos fazer?" 
+            formControlName="title">
+          </ion-input>
+          <ion-select label="Tarefa concluída?" label-placement="floating" fill="outline" formControlName="completed">
+            <ion-select-option value="true">Sim</ion-select-option>
+            <ion-select-option value="false">Não</ion-select-option>
+          </ion-select>
+
+          <div *ngIf="toDoForm.get('title')?.errors?.['required'] && (toDoForm.get('title')?.dirty || toDoForm.get('title')?.touched)">
+            <ion-text color="danger">
+              <p>O título é obrigatório.</p>
+            </ion-text>
+          </div>
+          <ion-button shape="default" type="submit" fill="outline" [disabled]="!toDoForm.valid">Salvar</ion-button>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+</ion-content>
+

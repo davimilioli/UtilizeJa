@@ -1,0 +1,56 @@
+ion-header{
+    
+    .header-content{
+        padding: 0;
+        ion-title{
+            padding-left: 0;
+        }
+    }
+  
+}
+
+form{
+    padding: 0 1rem;
+
+    ion-input, ion-textarea{
+        border: 1px solid var(--ion-color-primary);
+        padding: 0 1rem;
+        --padding-start: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
+    }
+    
+    ion-textarea{
+        --padding-start: 0;
+    }
+
+    ion-button{
+        color: var(--ion-color-primary);
+        height: 50px;
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
+        width: 100%;
+        text-transform: lowercase;
+        text-transform: capitalize;
+        --border-width: 1px;
+        font-weight: 400;
+        --border-radius: 0;
+    }
+}
+
+.toDoList{
+    .toDoList-content{
+        .toDoList-items{
+            ion-list{
+                ion-checkbox{
+                    display: flex;
+                    flex-direction: row-reverse;
+
+                }
+
+                ion-icon{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
