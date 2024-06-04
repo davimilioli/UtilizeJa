@@ -5,9 +5,6 @@
         <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
       </ion-button>
       <ion-title class="ion-text-center">Bloco de Notas</ion-title>
-      <ion-button shape="round" fill="clear" id="open-modal">
-        <ion-icon slot="icon-only" name="add-outline"  color="primary"></ion-icon>
-      </ion-button>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -78,5 +75,11 @@
       </ion-content>
     </ng-template>
   </ion-modal>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
