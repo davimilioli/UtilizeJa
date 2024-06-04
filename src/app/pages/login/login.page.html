@@ -26,17 +26,19 @@
       </ion-button>
     </ion-input>
     <ion-button shape="default" fill="outline"  type="submit" id="button-login">Fazer Login</ion-button>
-    <div class="loading" *ngIf="loading">
-      <ion-spinner name="circular"></ion-spinner>
-    </div>
   </form>
   <div class="text-other">
     <p>OU</p>
   </div>
   <div class="login-google">
     <ion-button size="small" fill="outline" (click)="loginFirebase()">
-      <ion-icon name="logo-google"></ion-icon>
-      Faça login com o Google
+      <div *ngIf="loading !== true; else elseLoading">
+        <ion-icon name="logo-google"></ion-icon>
+         Faça login com o Google
+      </div>
+      <ng-template #elseLoading>
+        <ion-spinner name="dots" *ngIf="loading"></ion-spinner>
+      </ng-template>
     </ion-button>
   </div>
 
