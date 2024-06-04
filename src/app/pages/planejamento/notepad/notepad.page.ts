@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonModal } from '@ionic/angular';
+import { IonModal, AlertController, ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notepad',
@@ -20,7 +19,10 @@ export class NotepadPage implements OnInit {
 
   @ViewChild(IonModal) modal!: IonModal;
 
-  constructor(private formBuilder: FormBuilder, private storage: Storage, private alertController: AlertController,) {
+  constructor(private formBuilder: FormBuilder,
+    private storage: Storage,
+    private alertController: AlertController,
+    private toastController: ToastController) {
     this.noteForm = this.formBuilder.group({
       titleNote: ['', [Validators.required, Validators.maxLength(40)]],
       annotationNote: ['', [Validators.required, Validators.maxLength(250)]]
@@ -89,9 +91,9 @@ export class NotepadPage implements OnInit {
       this.noteForm.reset();
 
   
-      console.log('Dados salvos:', list);
+      this.toast('Nota salva');
     } else {
-      console.log('Formulário inválido');
+      this.toast('Formulário inválido');
     }
   }
 
@@ -109,8 +111,9 @@ export class NotepadPage implements OnInit {
         });
   
         this.modal.present();
+        this.toast('Nota atualizada')
       } else {
-        console.log('Nota não encontrada');
+        this.toast('Nota não encontrada')
       }
     }
   }
@@ -129,7 +132,18 @@ export class NotepadPage implements OnInit {
       this.notes = updatedData;
   
       console.log('Exluida: ', titleNote);
+      this.toast('Nota excluida');
     }
+  }
+
+  async toast(message: string){
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'top',
+    });
+
+    await toast.present();
   }
   
 }

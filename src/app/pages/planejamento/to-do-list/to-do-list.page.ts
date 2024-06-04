@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonModal } from '@ionic/angular';
+import { IonModal, AlertController, ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-to-do-list',
@@ -19,7 +18,7 @@ export class ToDoListPage implements OnInit {
 
   @ViewChild(IonModal) modal!: IonModal;
 
-  constructor(private formBuilder: FormBuilder, private storage: Storage, private alertController: AlertController) {
+  constructor(private formBuilder: FormBuilder, private storage: Storage, private alertController: AlertController, private toastController: ToastController) {
     this.toDoForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(30)]],
       completed: ['']
@@ -97,9 +96,9 @@ export class ToDoListPage implements OnInit {
       this.modal.dismiss(null, 'cancelar');
       this.toDoForm.reset();
   
-      console.log('Dados salvos:', list);
+      this.toast('Lista salva');
     } else {
-      console.log('Formulário inválido');
+      this.toast('Formulário inválido');
     }
   }
   
@@ -128,8 +127,9 @@ export class ToDoListPage implements OnInit {
         });
   
         this.modal.present();
+        this.toast('Lista salva');
       } else {
-        console.log('Nota não encontrada');
+        this.toast('Lista não encontrada');
       }
     }
   }
@@ -146,10 +146,20 @@ export class ToDoListPage implements OnInit {
     
         await this.storage.set('Tasks', list);
         this.tasks = list;
-    
-        console.log('Tarefa atualizada:', task);
+        
+        this.toast('Tarefa atualizada');
       }
     }
+  }
+
+  async toast(message: string){
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'top',
+    });
+
+    await toast.present();
   }
   
 }
