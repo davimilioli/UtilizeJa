@@ -15,21 +15,27 @@
 <ion-content [fullscreen]="true">
   <div class="toDoList">
     <div class="toDoList-content">
-      <div class="toDoList-items">
-        <ion-list>
-          <ion-item *ngFor="let task of tasks; let i = index">
-            <ion-checkbox name="title-checkbox" labelPlacement="end" justify="start" [(ngModel)]="task.completed" [ngClass]="{'completed': task.completed}" (click)="toggleTaskCompleted(task)">
-              <ion-label>{{ task.title }}</ion-label>
-            </ion-checkbox>
-            <ion-button color="primary" fill="clear" (click)="presentAlert(task.title)">
-              <ion-icon slot="icon-only" name="close-outline" color="primary"></ion-icon>
-            </ion-button>
-            <ion-button color="primary" fill="clear" (click)="editTask(task)">
-              <ion-icon slot="icon-only" name="chevron-forward-sharp" color="primary"></ion-icon>
-            </ion-button>
-          </ion-item>
-        </ion-list>
+      <div class="block-notFound"  *ngIf="!tasks || tasks.length === 0; else elseTasks">
+        <p class="ion-text-center">Você não possui nenhuma lista</p>
+        <ion-button shape="default" (click)="openModal()" class="button" fill="outline">Criar</ion-button>
       </div>
+      <ng-template #elseTasks>
+        <div class="toDoList-items">
+          <ion-list>
+            <ion-item *ngFor="let task of tasks; let i = index">
+              <ion-checkbox name="title-checkbox" labelPlacement="end" justify="start" [(ngModel)]="task.completed" [ngClass]="{'completed': task.completed}" (click)="toggleTaskCompleted(task)">
+                <ion-label>{{ task.title }}</ion-label>
+              </ion-checkbox>
+              <ion-button color="primary" fill="clear" (click)="presentAlert(task.title)">
+                <ion-icon slot="icon-only" name="close-outline" color="primary"></ion-icon>
+              </ion-button>
+              <ion-button color="primary" fill="clear" (click)="editTask(task)">
+                <ion-icon slot="icon-only" name="chevron-forward-sharp" color="primary"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ng-template>
     </div>
   </div>
 
@@ -49,7 +55,7 @@
             placeholder="O que iremos fazer?" 
             formControlName="title">
           </ion-input>
-          <ion-select label="Tarefa concluída?" label-placement="floating" fill="outline" formControlName="completed">
+          <ion-select color="primary" fill="outline" placeholder="Tarefa concluída?" formControlName="completed">
             <ion-select-option value="true">Sim</ion-select-option>
             <ion-select-option value="false">Não</ion-select-option>
           </ion-select>
