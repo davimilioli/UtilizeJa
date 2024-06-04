@@ -10,5 +10,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <div *ngIf="favorites.length > 0; else elseFavorites">
+    <ion-card class="primary" *ngFor="let favorite of favorites">
+      <ion-card-header>
+        <ion-card-title>
+          {{ favorite.tool }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+    
+      </ion-card-content>
+      <div class="button-link ion-text-end">
+        <ion-button shape="round" fill="clear" [routerLink]="['/' + favorite.tool]" >
+          <ion-icon slot="icon-only" name="chevron-forward-outline" color="primary"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #elseFavorites>
+    <div class="ion-text-center">
+      <p>Você não tem favoritos</p>
+    </div>
+  </ng-template>
+
  
 </ion-content>

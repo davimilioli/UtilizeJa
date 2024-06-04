@@ -3,6 +3,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal, AlertController, ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { FavoritesService } from 'src/app/services/favorites/favorites.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -15,10 +16,16 @@ export class ToDoListPage implements OnInit {
   editingTask: any = null;
 
   tasks: { title: string, completed: boolean }[] = [];
+  existingFavorite: any = false;
 
   @ViewChild(IonModal) modal!: IonModal;
 
-  constructor(private formBuilder: FormBuilder, private storage: Storage, private alertController: AlertController, private toastController: ToastController) {
+  constructor(private formBuilder: FormBuilder,
+    private storage: Storage,
+    private alertController: AlertController,
+    private toastController: ToastController,
+    private favoriteService: FavoritesService) {
+
     this.toDoForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(30)]],
       completed: ['']
@@ -160,6 +167,24 @@ export class ToDoListPage implements OnInit {
     });
 
     await toast.present();
+  }
+
+  async favorite() {
+    if (this.existingFavorite) {
+      await this.favoriteService.removeFavorite('toDoList');
+      this.toast('Removida dos favoritos');
+    } else {
+      await this.favoriteService.saveFavorite('toDoList');
+      this.toast('Adicionado aos favoritos');
+    }
+    this.existingFavorite = !this.existingFavorite;
+    console.log(this.existingFavorite)
+  }
+  
+  async favoriteExisting() {
+    this.existingFavorite = await this.favoriteService.favoriteExisting('notepad');
+
+    console.log(this.existingFavorite)
   }
   
 }

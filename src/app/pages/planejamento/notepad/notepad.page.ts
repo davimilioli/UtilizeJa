@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal, AlertController, ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Storage } from '@ionic/storage-angular';
+import { FavoritesService } from 'src/app/services/favorites/favorites.service';
 
 @Component({
   selector: 'app-notepad',
@@ -16,13 +17,15 @@ export class NotepadPage implements OnInit {
   annotationNote: string = ''; 
   noteForm: FormGroup; 
   notes: any = []
+  existingFavorite: any = false;
 
   @ViewChild(IonModal) modal!: IonModal;
 
   constructor(private formBuilder: FormBuilder,
     private storage: Storage,
     private alertController: AlertController,
-    private toastController: ToastController) {
+    private toastController: ToastController,
+    private favoriteService: FavoritesService) {
     this.noteForm = this.formBuilder.group({
       titleNote: ['', [Validators.required, Validators.maxLength(40)]],
       annotationNote: ['', [Validators.required, Validators.maxLength(250)]]
@@ -52,7 +55,7 @@ export class NotepadPage implements OnInit {
   async ngOnInit() {
     await this.storage.create();
     this.notes = await this.storage.get('Notes');
-    console.log(this.notes)
+    this.favoriteExisting();
   }
 
   cancel() {
@@ -90,7 +93,6 @@ export class NotepadPage implements OnInit {
       this.modal.dismiss(null, 'cancelar');
       this.noteForm.reset();
 
-  
       this.toast('Nota salva');
     } else {
       this.toast('Formulário inválido');
@@ -144,6 +146,23 @@ export class NotepadPage implements OnInit {
     });
 
     await toast.present();
+  }
+
+  async favorite() {
+    if (this.existingFavorite) {
+      await this.favoriteService.removeFavorite('notepad');
+      this.toast('Removida dos favoritos');
+    } else {
+      await this.favoriteService.saveFavorite('notepad');
+      this.toast('Adicionado aos favoritos');
+    }
+    this.existingFavorite = !this.existingFavorite;
+    console.log(this.existingFavorite)
+  }
+  
+  async favoriteExisting() {
+    this.existingFavorite = await this.favoriteService.favoriteExisting('notepad');
+    console.log(this.existingFavorite)
   }
   
 }

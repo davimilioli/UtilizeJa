@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
-
-
-interface HistoricItem {
-  day: string;
-  progress: number;
-  animated?: boolean;
-}
+import { HistoricItem } from '../Types';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab4',
@@ -19,8 +14,10 @@ interface HistoricItem {
 export class Tab4Page {
   user: firebase.User | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
-
+  constructor(private authService: AuthService,
+    private router: Router,
+    private toastController: ToastController
+  ) {}
 
   historic: HistoricItem[] = [
     { day: 'Seg', progress: 25 },
@@ -41,11 +38,11 @@ export class Tab4Page {
       this.user = await this.authService.initializeUser();
       console.log(this.user)
     } catch (error) {
-      console.error('Erro ao inicializar usuário', error);
+      this.toast('Erro ao inicializar usuário');
+      //console.error('Erro ao inicializar usuário', error);
     }
   } 
   
-
   ngAfterViewInit() {
     setTimeout(() => {
       this.historic = this.historic.map((item: HistoricItem) => ({ ...item, animated: true }));
@@ -58,9 +55,19 @@ export class Tab4Page {
       this.user = null;
       this.router.navigate(['/login']);
     } catch(error: any) {
-      console.error('Erro ao fazer logout', error);
+      this.toast('Erro ao fazer logout');
+      //console.error('Erro ao fazer logout', error);
     }
   }
-  
+
+  async toast(message: string){
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'top',
+    });
+
+    await toast.present();
+  }
 
 }
