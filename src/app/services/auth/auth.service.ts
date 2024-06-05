@@ -71,9 +71,14 @@ export class AuthService {
   }
 
   async logoutAuthFirebase(){
-    await this.angularFireAuth.signOut();
-    await this.storage.remove('user');
-    this.currentUser = null;
+    try{
+      await this.angularFireAuth.signOut();
+      await this.storage.remove('user');
+      this.currentUser = null;
+      return true;
+    } catch(error){
+      return false;
+    }
   }
 
   async initializeUser() {
