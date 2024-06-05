@@ -68,13 +68,22 @@
           </div>
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
         </a>
-        <a (click)="logoutFirebase()">
+        <a *ngIf="user; else userExisting" (click)="logoutFirebase()">
           <div class="button-config-label">
-            <ion-icon slot="start" name="exit-outline"></ion-icon>
+            <ion-icon slot="start" name="log-out"></ion-icon>
             Sair
           </div>
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
         </a>
+        <ng-template #userExisting>
+          <a [routerLink]="['/login']">
+            <div class="button-config-label">
+              <ion-icon slot="start" name="log-in"></ion-icon>
+              Fazer login
+            </div>
+            <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </a>
+        </ng-template>
       </div>
     </div>
   </div>
