@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
-import { HistoricItem } from '../Types';
 import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
