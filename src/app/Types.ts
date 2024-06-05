@@ -3,12 +3,6 @@ export interface Favorites {
     link: string
 }
 
-export interface HistoricItem {
-    day: string;
-    progress: number;
-    animated?: boolean;
-}
-
 export interface AuthFormData {
     email: string;
     password: string
