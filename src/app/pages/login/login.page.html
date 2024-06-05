@@ -16,7 +16,12 @@
     </ion-text>
   </div>
 
-  <app-form-auth (onSubmit)="loginFirebase($event)" (signGoogle)="loginFirebaseGoogle($event)"></app-form-auth>
+  <app-form-auth
+  (onSubmit)="loginFirebase($event)"
+  (signGoogle)="loginFirebaseGoogle($event)"
+  [btnText]="'Fazer login'"
+  [loading]="loading"
+  ></app-form-auth>
   <p class="text-direct-form ion-text-center">Não possui cadastro? <a [routerLink]="['/cadastro']">Cadastrar</a></p>
 
   <div class="ion-text-center">

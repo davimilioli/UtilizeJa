@@ -10,34 +10,33 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  loading: boolean = false;
   constructor(public authService: AuthService, private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {}
 
   async loginFirebase(formData: AuthFormData){
-    console.log(formData)
-/*     try{
-      this.loading = true;
-      await this.authService.loginAuthFirebase();
+    this.loading = true;
+    const auth = await this.authService.signIn(formData.email, formData.password)
+    this.loading = false;
+    if(auth){
       this.router.navigate(['/tabs/tab4']);
-    } catch(error: any) {
-      console.error('Deu erro');
-    } finally {
-      this.loading = false;
-    } */
+    } else {
+      this.toast('Email ou senha incorretos');
+    }
   }
 
   async loginFirebaseGoogle(response: any){
-
+    this.loading = true;
+    
     try{
       await this.authService.loginAuthFirebase();
       this.router.navigate(['/tabs/tab4']);
     } catch(error: any) {
       this.toast('Não foi possível autenticar');
     } finally {
+      this.loading = false;
       this.toast('Autenticado com sucesso');
-      return true;
     } 
   }
 

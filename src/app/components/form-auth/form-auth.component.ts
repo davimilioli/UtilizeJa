@@ -11,18 +11,29 @@ export class FormAuthComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<AuthFormData>();
   @Output() signGoogle = new EventEmitter();
   @Input() showRepeatPassword: boolean = false;
-  loading: boolean = false;
+  @Input() btnText!: string;
+  @Input() loading: boolean = false;
   authForm!: FormGroup;
   authData: AuthFormData | null = null;
 
   constructor(private formBuilder: FormBuilder) {
-    this.authForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      passwordRepeat: ['', [Validators.required, Validators.minLength(6)]]
-    }, {
-      validators: this.checkPasswords
-    });
+
+    if(this.showRepeatPassword){
+
+      this.authForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        passwordRepeat: ['', [Validators.required, Validators.minLength(6)]]
+      }, {
+        validators: this.checkPasswords
+      });
+    } else {
+      this.authForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]]
+      });
+    }
+
   }
 
   ngOnInit() {}
@@ -44,13 +55,11 @@ export class FormAuthComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.onSubmit.emit(this.authForm.value)
   }
 
   loginGoogle() {
     this.signGoogle.emit(true);
-    this.loading = true;
   }
 
   checkPasswords(passwords: any): { [key: string]: any } | null {

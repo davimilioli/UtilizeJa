@@ -46,7 +46,7 @@
   
   <ion-button shape="default" fill="outline" type="submit" id="button-login">
     <div *ngIf="loading !== true; else elseLoading">
-      Fazer Login
+      {{ btnText }}
     </div>
     <ng-template #elseLoading>
       <ion-spinner name="dots" *ngIf="loading"></ion-spinner>

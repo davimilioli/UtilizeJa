@@ -35,12 +35,39 @@ export class AuthService {
     }
   }
 
+  async createSign(email: string, password: string){
+    try{
+      await this.angularFireAuth.createUserWithEmailAndPassword(email, password)
+      console.log('Registrou')
+      return true;
+    } catch(error){
+      console.error('Erro ao criar usuário')
+      return false;
+    }
+  }
+
+  async signIn(email: string, password: string): Promise<boolean> {
+    try {
+      await this.angularFireAuth.signInWithEmailAndPassword(email, password);
+      console.log('Logou');
+      return true;
+    } catch(error) {
+      console.log('Erro ao fazer login');
+      return false;
+    }
+  }
+
   async createStorage() {
     await this.storage.create(); 
   }
 
-  loginAuthFirebase(){
-    return this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  async loginAuthFirebase(){
+    try{
+      await this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      return true;
+    } catch(error){
+      return false;
+    }
   }
 
   async logoutAuthFirebase(){

@@ -11,6 +11,6 @@ export interface HistoricItem {
 
 export interface AuthFormData {
     email: string;
-    senha: string
+    password: string
 }
   

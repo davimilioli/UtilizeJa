@@ -16,8 +16,14 @@ export class CadastroPage implements OnInit {
   ngOnInit() {
   }
 
-  registerFirebase(formData: AuthFormData){
-    console.log(formData)
+  async registerLoginFirebase(formData: AuthFormData){
+    const sucess = await this.authService.createSign(formData.email, formData.password);
+
+    if(!sucess){
+      this.toast('Erro ao criar usuário');
+    } 
+    
+    this.router.navigate(['/login']);
   }
 
   async loginFirebaseGoogle(response: any){

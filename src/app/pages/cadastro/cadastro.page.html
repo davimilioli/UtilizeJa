@@ -15,6 +15,12 @@
       <p> Junte-se a nós e comece a organizar seu dia a dia!</p>
     </ion-text>
   </div>
-  <app-form-auth (onSubmit)="registerFirebase($event)" (signGoogle)="loginFirebaseGoogle($event)" [showRepeatPassword]="true"></app-form-auth>
+  <app-form-auth
+  (onSubmit)="registerLoginFirebase($event)"
+  (signGoogle)="loginFirebaseGoogle($event)"
+  [showRepeatPassword]="true"
+  [btnText]="'Cadastrar'"
+  
+  ></app-form-auth>
   <p class="text-direct-form ion-text-center">Já possui login? <a [routerLink]="['/login']" >Login</a></p>
 </ion-content>
