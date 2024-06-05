@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { MessagesService } from 'src/app/services/messages/messages.service';
 import { Router } from '@angular/router';
 import { AuthFormData } from 'src/app/Types';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   loading: boolean = false;
-  constructor(public authService: AuthService, private router: Router, private toastController: ToastController) { }
+  constructor(public authService: AuthService, private router: Router, private messagesService: MessagesService) { }
 
   ngOnInit() {}
 
@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     if(auth){
       this.router.navigate(['/tabs/tab4']);
     } else {
-      this.toast('Email ou senha incorretos');
+      this.messagesService.toast('Email ou senha incorretos');
     }
   }
 
@@ -33,10 +33,10 @@ export class LoginPage implements OnInit {
       await this.authService.loginAuthFirebase();
       this.router.navigate(['/tabs/tab4']);
     } catch(error: any) {
-      this.toast('Não foi possível autenticar');
+      this.messagesService.toast('Não foi possível autenticar');
     } finally {
       this.loading = false;
-      this.toast('Autenticado com sucesso');
+      this.messagesService.toast('Autenticado com sucesso');
     } 
   }
 
@@ -46,15 +46,5 @@ export class LoginPage implements OnInit {
     } catch(error: any) {
       console.error('Erro ao da logout')
     }
-  }
-
-  async toast(message: string){
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: 'top',
-    });
-
-    await toast.present();
   }
 }

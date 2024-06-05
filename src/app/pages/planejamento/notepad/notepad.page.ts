@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonModal, AlertController, ToastController } from '@ionic/angular';
+import { IonModal, AlertController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Storage } from '@ionic/storage-angular';
 import { FavoritesService } from 'src/app/services/favorites/favorites.service';
+import { MessagesService } from 'src/app/services/messages/messages.service';
 
 @Component({
   selector: 'app-notepad',
@@ -24,7 +25,7 @@ export class NotepadPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private storage: Storage,
     private alertController: AlertController,
-    private toastController: ToastController,
+    private messagesService: MessagesService,
     private favoriteService: FavoritesService) {
     this.noteForm = this.formBuilder.group({
       titleNote: ['', [Validators.required, Validators.maxLength(40)]],
@@ -93,9 +94,9 @@ export class NotepadPage implements OnInit {
       this.modal.dismiss(null, 'cancelar');
       this.noteForm.reset();
 
-      this.toast('Nota salva');
+      this.messagesService.toast('Nota salva');
     } else {
-      this.toast('Formulário inválido');
+      this.messagesService.toast('Formulário inválido');
     }
   }
 
@@ -113,9 +114,9 @@ export class NotepadPage implements OnInit {
         });
   
         this.modal.present();
-        this.toast('Nota atualizada')
+        this.messagesService.toast('Nota atualizada')
       } else {
-        this.toast('Nota não encontrada')
+        this.messagesService.toast('Nota não encontrada')
       }
     }
   }
@@ -134,27 +135,17 @@ export class NotepadPage implements OnInit {
       this.notes = updatedData;
   
       console.log('Exluida: ', titleNote);
-      this.toast('Nota excluida');
+      this.messagesService.toast('Nota excluida');
     }
-  }
-
-  async toast(message: string){
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: 'top',
-    });
-
-    await toast.present();
   }
 
   async favorite() {
     if (this.existingFavorite) {
       await this.favoriteService.removeFavorite('notepad');
-      this.toast('Removida dos favoritos');
+      this.messagesService.toast('Removida dos favoritos');
     } else {
       await this.favoriteService.saveFavorite('notepad');
-      this.toast('Adicionado aos favoritos');
+      this.messagesService.toast('Adicionado aos favoritos');
     }
     this.existingFavorite = !this.existingFavorite;
     console.log(this.existingFavorite)

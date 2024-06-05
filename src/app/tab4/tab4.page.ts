@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth/auth.service';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { HistoricItem } from '../Types';
-import { ToastController } from '@ionic/angular';
+import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
   selector: 'app-tab4',
@@ -16,7 +16,7 @@ export class Tab4Page {
 
   constructor(private authService: AuthService,
     private router: Router,
-    private toastController: ToastController
+    private messagesService: MessagesService
   ) {}
 
   historic: HistoricItem[] = [
@@ -38,7 +38,7 @@ export class Tab4Page {
       this.user = await this.authService.initializeUser();
       console.log(this.user)
     } catch (error) {
-      this.toast('Erro ao inicializar usuário');
+      this.messagesService.toast('Erro ao inicializar usuário');
       //console.error('Erro ao inicializar usuário', error);
     }
   } 
@@ -55,19 +55,10 @@ export class Tab4Page {
       this.user = null;
       this.router.navigate(['/login']);
     } catch(error: any) {
-      this.toast('Erro ao fazer logout');
+      this.messagesService.toast('Erro ao fazer logout');
       //console.error('Erro ao fazer logout', error);
     }
   }
 
-  async toast(message: string){
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: 'top',
-    });
-
-    await toast.present();
-  }
 
 }

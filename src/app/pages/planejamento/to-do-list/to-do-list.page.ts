@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonModal, AlertController, ToastController } from '@ionic/angular';
+import { IonModal, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { FavoritesService } from 'src/app/services/favorites/favorites.service';
+import { MessagesService } from 'src/app/services/messages/messages.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -23,7 +24,7 @@ export class ToDoListPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private storage: Storage,
     private alertController: AlertController,
-    private toastController: ToastController,
+    private messagesService: MessagesService,
     private favoriteService: FavoritesService) {
 
     this.toDoForm = this.formBuilder.group({
@@ -103,9 +104,9 @@ export class ToDoListPage implements OnInit {
       this.modal.dismiss(null, 'cancelar');
       this.toDoForm.reset();
   
-      this.toast('Lista salva');
+      this.messagesService.toast('Lista salva');
     } else {
-      this.toast('Formulário inválido');
+      this.messagesService.toast('Formulário inválido');
     }
   }
   
@@ -134,9 +135,9 @@ export class ToDoListPage implements OnInit {
         });
   
         this.modal.present();
-        this.toast('Lista salva');
+        this.messagesService.toast('Lista salva');
       } else {
-        this.toast('Lista não encontrada');
+        this.messagesService.toast('Lista não encontrada');
       }
     }
   }
@@ -154,28 +155,18 @@ export class ToDoListPage implements OnInit {
         await this.storage.set('Tasks', list);
         this.tasks = list;
         
-        this.toast('Tarefa atualizada');
+        this.messagesService.toast('Tarefa atualizada');
       }
     }
-  }
-
-  async toast(message: string){
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: 'top',
-    });
-
-    await toast.present();
   }
 
   async favorite() {
     if (this.existingFavorite) {
       await this.favoriteService.removeFavorite('toDoList');
-      this.toast('Removida dos favoritos');
+      this.messagesService.toast('Removida dos favoritos');
     } else {
       await this.favoriteService.saveFavorite('toDoList');
-      this.toast('Adicionado aos favoritos');
+      this.messagesService.toast('Adicionado aos favoritos');
     }
     this.existingFavorite = !this.existingFavorite;
     console.log(this.existingFavorite)
