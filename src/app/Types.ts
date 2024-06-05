@@ -8,3 +8,9 @@ export interface HistoricItem {
     progress: number;
     animated?: boolean;
 }
+
+export interface AuthFormData {
+    email: string;
+    senha: string
+}
+  

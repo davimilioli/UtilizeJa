@@ -15,32 +15,6 @@
       <p> Junte-se a nós e comece a organizar seu dia a dia!</p>
     </ion-text>
   </div>
-  <form class="login-form">
-    <ion-input labelPlacement="stacked" placeholder="Digite seu email">
-      <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
-    </ion-input>
-    <ion-input labelPlacement="stacked" placeholder="Digite sua senha">
-      <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-      <ion-button fill="clear" slot="end" aria-label="Show/hide">
-        <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
-      </ion-button>
-    </ion-input>
-    <ion-input labelPlacement="stacked" placeholder="Repita sua senha">
-      <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-      <ion-button fill="clear" slot="end" aria-label="Show/hide">
-        <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
-      </ion-button>
-    </ion-input>
-    <ion-button shape="default" type="submit" fill="outline" id="button-login">Cadastrar</ion-button>
-  </form>
-  <div class="text-other">
-    <p>OU</p>
-  </div>
-  <div class="login-google">
-    <ion-button size="small" color="light">
-      <ion-icon name="logo-google"></ion-icon>
-      Faça login com o Google
-    </ion-button>
-  </div>
+  <app-form-auth (onSubmit)="registerFirebase($event)" (signGoogle)="loginFirebaseGoogle($event)" [showRepeatPassword]="true"></app-form-auth>
   <p class="text-direct-form ion-text-center">Já possui login? <a [routerLink]="['/login']" >Login</a></p>
 </ion-content>
