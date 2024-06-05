@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { ToDoListPageRoutingModule } from './to-do-list-routing.module';
 
 import { ToDoListPage } from './to-do-list.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ToDoListPage } from './to-do-list.page';
     FormsModule,
     IonicModule,
     ToDoListPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ToDoListPage]
 })

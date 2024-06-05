@@ -1,0 +1,32 @@
+<ion-header *ngIf="layout == 'default'; else elseLayout" [translucent]="true">
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="logo">
+        <img src="assets/logo/logo-compact.svg"/>
+        UtilizeJá
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ng-template #elseLayout>
+  <ion-header [translucent]="true" [ngStyle]="{ 'padding': '0' }">
+    <ion-toolbar>
+      <div class="header-content alternative">
+        <ion-button shape="round" fill="clear" [routerLink]="linkRedirect">
+          <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
+        </ion-button>
+        <ion-title class="ion-text-center">{{ titleHeader }}</ion-title>
+        <div *ngIf="favoriteActived == 'true' ">
+          <ion-button shape="round" fill="clear" (click)="favorite(tool)" *ngIf="existingFavorite; else elseExistingFavorite">
+            <ion-icon slot="icon-only" name="bookmark" color="primary"></ion-icon>
+          </ion-button>
+          <ng-template #elseExistingFavorite>
+            <ion-button shape="round" fill="clear" (click)="favorite(tool)">
+              <ion-icon slot="icon-only" name="bookmark-outline" color="primary"></ion-icon>
+            </ion-button>
+          </ng-template>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+</ng-template>

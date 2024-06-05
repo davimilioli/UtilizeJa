@@ -6,6 +6,7 @@ import { Tab4Page } from './tab4.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab4PageRoutingModule } from './tab4-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { Tab4PageRoutingModule } from './tab4-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab4PageRoutingModule
+    Tab4PageRoutingModule,
+    SharedModule
   ],
   declarations: [Tab4Page]
 })

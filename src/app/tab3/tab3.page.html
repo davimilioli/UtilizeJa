@@ -1,14 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-content">
-      <div class="logo">
-        <img src="assets/logo/logo-compact.svg"/>
-        UtilizeJá
-      </div>
-    </div>
-  </ion-toolbar>
-</ion-header>
-
+<app-header></app-header>
 <ion-content [fullscreen]="true">
 
   <div *ngIf="favorites.length > 0; else elseFavorites">

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConversorPdfPageRoutingModule } from './conversor-pdf-routing.module';
 
 import { ConversorPdfPage } from './conversor-pdf.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConversorPdfPageRoutingModule
+    ConversorPdfPageRoutingModule,
+    SharedModule
   ],
   declarations: [ConversorPdfPage]
 })

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { NotepadPageRoutingModule } from './notepad-routing.module';
 
 import { NotepadPage } from './notepad.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NotepadPage } from './notepad.page';
     FormsModule,
     IonicModule,
     NotepadPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [NotepadPage]
 })

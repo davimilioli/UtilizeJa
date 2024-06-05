@@ -1,14 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-content">
-      <ion-button fill="clear" [routerLink]="['/tabs/tab2']">
-        <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
-      </ion-button>
-      <ion-title class="ion-text-center">Conversor de PDF</ion-title>
-    </div>
-  </ion-toolbar>
-  
-</ion-header>
+<app-header 
+layout="alternative"
+titleHeader="Conversor de PDF"
+linkRedirect="/tabs/tab2"
+tool="pdf"
+favoriteActived="true"
+></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <form (ngSubmit)="convertToPdf()">

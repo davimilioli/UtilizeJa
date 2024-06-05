@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal, AlertController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Storage } from '@ionic/storage-angular';
-import { FavoritesService } from 'src/app/services/favorites/favorites.service';
 import { MessagesService } from 'src/app/services/messages/messages.service';
 
 @Component({
@@ -25,8 +24,7 @@ export class NotepadPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private storage: Storage,
     private alertController: AlertController,
-    private messagesService: MessagesService,
-    private favoriteService: FavoritesService) {
+    private messagesService: MessagesService) {
     this.noteForm = this.formBuilder.group({
       titleNote: ['', [Validators.required, Validators.maxLength(40)]],
       annotationNote: ['', [Validators.required, Validators.maxLength(250)]]
@@ -56,7 +54,6 @@ export class NotepadPage implements OnInit {
   async ngOnInit() {
     await this.storage.create();
     this.notes = await this.storage.get('Notes');
-    this.favoriteExisting();
   }
 
   cancel() {
@@ -139,21 +136,5 @@ export class NotepadPage implements OnInit {
     }
   }
 
-  async favorite() {
-    if (this.existingFavorite) {
-      await this.favoriteService.removeFavorite('notepad');
-      this.messagesService.toast('Removida dos favoritos');
-    } else {
-      await this.favoriteService.saveFavorite('notepad');
-      this.messagesService.toast('Adicionado aos favoritos');
-    }
-    this.existingFavorite = !this.existingFavorite;
-    console.log(this.existingFavorite)
-  }
-  
-  async favoriteExisting() {
-    this.existingFavorite = await this.favoriteService.favoriteExisting('notepad');
-    console.log(this.existingFavorite)
-  }
   
 }

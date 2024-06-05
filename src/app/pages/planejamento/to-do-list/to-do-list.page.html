@@ -1,21 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-content">
-      <ion-button shape="round" fill="clear" [routerLink]="['/tabs/tab2']" >
-        <ion-icon slot="icon-only" name="chevron-back-outline" color="primary"></ion-icon>
-      </ion-button>
-      <ion-title class="ion-text-center">Lista de Afazeres</ion-title>
-      <ion-button shape="round" fill="clear" (click)="favorite()" *ngIf="existingFavorite; else elseExistingFavorite">
-        <ion-icon slot="icon-only" name="bookmark" color="primary"></ion-icon>
-      </ion-button>
-      <ng-template #elseExistingFavorite>
-        <ion-button shape="round" fill="clear" (click)="favorite()">
-          <ion-icon slot="icon-only" name="bookmark-outline" color="primary"></ion-icon>
-        </ion-button>
-      </ng-template>
-    </div>
-  </ion-toolbar>
-</ion-header>
+<app-header 
+layout="alternative"
+titleHeader="Lista de Afazeres"
+linkRedirect="/tabs/tab2"
+tool="toDoList"
+favoriteActived="true"
+></app-header>
 
 <ion-content [fullscreen]="true">
   <div class="block-notFound"  *ngIf="!tasks || tasks.length === 0; else elseTasks">

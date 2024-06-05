@@ -16,13 +16,14 @@ export class FavoritesService {
   async startStorage() {
     await this.storage.create();
     this.favorites = await this.storage.get('Favorites') || [];
+    //await this.storage.clear();
+    console.log(this.favorites)
   }
 
   async saveFavorite(tool: string) {
     this.favorites.push({ tool: tool, link: `/${tool.toLowerCase()}` });
     await this.storage.set('Favorites', this.favorites);
     console.log('Ferramenta adicionada');
-    //await this.storage.clear();
   }
 
   async removeFavorite(tool: string) {
@@ -32,7 +33,8 @@ export class FavoritesService {
   }
 
   async favoriteExisting(tool: string) {
-    return this.favorites.some(favorite => favorite.tool === tool);
+    let favorites: Favorites[] = await this.getFavorites()
+    return favorites.some(favorite => favorite.tool === tool);
   }
 
   async getFavorites() {
