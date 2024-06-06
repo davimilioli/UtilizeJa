@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth/auth.service';
+import firebase from 'firebase/compat/app';
+import { MessagesService } from './services/messages/messages.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +11,31 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform, private router: Router) {
+  user: firebase.User | null = null;
+  constructor(private platform: Platform,
+    private router: Router, 
+    private authService: AuthService,
+    private messagesService: MessagesService) {
+
     this.startApp();
   }
 
   startApp() {
     this.platform.ready().then(() => {
-      const authenticated = false;
-      return authenticated ? this.router.navigate(['/tabs/tab1']) :  this.router.navigate(['/introducao']);
+      this.checkUser();
     });
+  }
+
+  async checkUser() {
+    try {
+      this.user = await this.authService.initializeUser();
+      if (this.user) {
+        this.router.navigate(['/tabs/tab1']);
+      } else {
+        this.router.navigate(['/introducao']);
+      }
+    } catch (error) {
+      this.messagesService.toast('Erro ao inicializar usuário');
+    }
   }
 }
