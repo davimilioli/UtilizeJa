@@ -3,10 +3,10 @@
 <ion-content [fullscreen]="true">
   <div class="avatar" *ngIf="user; else elseUser">
     <ion-avatar>
-      <img [src]="user.photoURL" />
+      <img [src]="user.photoURL ? user.photoURL : 'https://ionicframework.com/docs/img/demos/avatar.svg' " />
     </ion-avatar>
     <ion-text class="ion-text-center">
-      <h1> {{ user.displayName }} </h1>
+      <h1> {{ user.displayName ? user.displayName : user.email }} </h1>
     </ion-text>
   </div>
   <ng-template #elseUser>
