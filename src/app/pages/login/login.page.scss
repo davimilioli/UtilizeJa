@@ -1,7 +1,18 @@
 ion-header{
-    ion-toolbar ion-img, .header-content{
+    .header-content{
         justify-content: center;
+        display: flex;
+
+        ion-img{
+            display: flex;
+            width: 50%;
+            justify-content: center;
+        }
     }
+}
+
+.header-md{
+    box-shadow: none !important;
 }
 
 

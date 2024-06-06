@@ -5,16 +5,7 @@ ion-header {
     padding: .5rem 1rem;
 
     ion-toolbar{
-        ion-img{
-    
-            display: flex;
-            justify-content: start;
-    
-            &::part(image){
-                width: 40%;
-            }
-        }
-        
+
         .header-content {
             display: flex;
             align-items: center;
@@ -29,7 +20,7 @@ ion-header {
                 gap: 5px;
     
                 img{
-                    width: 40px;
+                    width: 50%;
                 }
     
     
