@@ -10,7 +10,7 @@ import { MessagesService } from 'src/app/services/messages/messages.service';
   styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage implements OnInit {
-
+  loading: boolean = false;
   constructor(public authService: AuthService,
     private router: Router,
     private messagesService: MessagesService) { }
@@ -28,17 +28,25 @@ export class CadastroPage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  async loginFirebaseGoogle(response: any){
+  async loginFirebaseGoogle(){
 
-    try{
+    this.loading = true;
+  
+    try {
       await this.authService.loginAuthFirebase();
-      this.router.navigate(['/tabs/tab4']);
+
+      const user = this.authService.currentUser;
+      if (user) {
+        this.router.navigate(['/tabs/tab4']);
+        this.messagesService.toast('Autenticado com sucesso');
+      } else {
+        this.messagesService.toast('Não foi possível autenticar');
+      }
     } catch(error: any) {
       this.messagesService.toast('Não foi possível autenticar');
     } finally {
-      this.messagesService.toast('Autenticado com sucesso');
-      return true;
-    } 
+      this.loading = false;
+    }
   }
 
 

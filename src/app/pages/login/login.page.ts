@@ -26,19 +26,26 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async loginFirebaseGoogle(response: any){
+  async loginFirebaseGoogle(){
     this.loading = true;
-    
-    try{
+  
+    try {
       await this.authService.loginAuthFirebase();
-      this.router.navigate(['/tabs/tab4']);
+
+      const user = this.authService.currentUser;
+      if (user) {
+        this.router.navigate(['/tabs/tab4']);
+        this.messagesService.toast('Autenticado com sucesso');
+      } else {
+        this.messagesService.toast('Não foi possível autenticar');
+      }
     } catch(error: any) {
       this.messagesService.toast('Não foi possível autenticar');
     } finally {
       this.loading = false;
-      this.messagesService.toast('Autenticado com sucesso');
-    } 
+    }
   }
+  
 
   async logoutFirebase(){
     try{

@@ -17,6 +17,7 @@ export class FormAuthComponent implements OnInit {
   authData: AuthFormData | null = null;
 
   constructor(private formBuilder: FormBuilder) {
+    console.log(this.showRepeatPassword)
 
     if(this.showRepeatPassword){
 
@@ -59,7 +60,7 @@ export class FormAuthComponent implements OnInit {
   }
 
   loginGoogle() {
-    this.signGoogle.emit(true);
+    this.signGoogle.emit();
   }
 
   checkPasswords(passwords: any): { [key: string]: any } | null {
