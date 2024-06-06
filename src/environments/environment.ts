@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiBrasil: 'https://brasilapi.com.br/api',
   firebaseConfig:{
     apiKey: "",
     authDomain: "",

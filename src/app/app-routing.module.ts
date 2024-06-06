@@ -29,7 +29,11 @@ const routes: Routes = [
   {
     path: 'to-do-list',
     loadChildren: () => import('./pages/planejamento/to-do-list/to-do-list.module').then( m => m.ToDoListPageModule)
+  },  {
+    path: 'cep',
+    loadChildren: () => import('./pages/ferramentas/cep/cep.module').then( m => m.CepPageModule)
   },
+
 
 ];
 

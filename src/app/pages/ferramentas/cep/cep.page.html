@@ -1,0 +1,67 @@
+<app-header 
+layout="alternative"
+titleHeader="Consulta de CEP"
+linkRedirect="/tabs/tab2"
+tool="cep"
+favoriteActived="true"
+></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="result-query">
+    <h2>
+      Informações do CEP
+    </h2>
+    <ion-item>
+      <ion-label>
+        <h3>Cep</h3>
+        <p>{{ result ? result.cep : '-' }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Logradouro</h3>
+        <p>{{ result ? result.street : '-' }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Bairro</h3>
+        <p>{{ result ? result.neighborhood : '-' }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Cidade</h3>
+        <p>{{ result ? result.city : '-' }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Estado</h3>
+        <p>{{ result ? result.state : '-' }}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <form [formGroup]="cepForm" (ngSubmit)="submit()">
+    <p class="form-description">Formato de CEP: XXXXX-XXX</p>
+    <ion-input labelPlacement="stacked" placeholder="Digite o cep" formControlName="cep" (input)="formatCep($event)" maxlength="9" [disabled]="clearButton"></ion-input>
+    <ion-button shape="default" type="submit" fill="outline" [disabled]="clearButton">Pesquisar</ion-button>
+    <ion-button shape="default" fill="outline" (click)="clearCep()" [disabled]="!clearButton">Limpar</ion-button>
+<!--     <div *ngIf="cepForm.get('cep')?.errors?.['required'] && (cepForm.get('cep')?.dirty || cepForm.get('cep')?.touched)">
+      <ion-text color="danger">
+        <p>Campo de CEP é obrigatório.</p>
+      </ion-text>
+    </div> -->
+    <div *ngIf="cepForm.get('cep')?.errors?.['minlength'] && (cepForm.get('cep')?.dirty || cepForm.get('cep')?.touched)">
+      <ion-text color="danger">
+        <p>O CEP deve ter no mínimo 8 caracteres.</p>
+      </ion-text>
+    </div>
+    <div *ngIf="cepForm.get('cep')?.errors?.['maxlength'] && (cepForm.get('cep')?.dirty || cepForm.get('cep')?.touched)">
+      <ion-text color="danger">
+        <p>O CEP deve ter no máximo 9 caracteres.</p>
+      </ion-text>
+    </div>
+  </form>
+</ion-content>
