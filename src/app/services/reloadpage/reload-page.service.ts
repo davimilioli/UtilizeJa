@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReloadPageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   handleRefresh(event: any) {
     setTimeout(() => {
@@ -15,6 +16,10 @@ export class ReloadPageService {
   }
 
   reload() {
-    window.location.reload();
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      console.log(currentUrl)
+      this.router.navigate([currentUrl]);
+    });
   }
 }
