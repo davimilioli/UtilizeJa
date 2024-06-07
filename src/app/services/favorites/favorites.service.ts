@@ -42,12 +42,13 @@ export class FavoritesService {
     const tools: any = {
       'toDoList': { label: 'Lista de Afazeres', link: 'to-do-list' },
       'notepad': { label: 'Bloco de Notas', link: 'notepad' },
-      'conversorPdf': { label: 'Conversor de PDF', link: 'conversor-pdf' }
+      'conversorPdf': { label: 'Conversor de PDF', link: 'conversor-pdf' },
+      'cep': { label: 'Consultar CEP', link: 'cep' }
     }
 
     const formatedFavorites = favoriteList.map(favorite => {
       const toolType = favorite.tool;
-      const { label, link } = tools[toolType] || { label: 'Outro', link: '' };
+      const { label, link } = tools[toolType] || { label: '', link: '' };
 
       return { ...favorite, label: label, link: link };
   });
