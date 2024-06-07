@@ -16,7 +16,8 @@ export class Tab1Page implements OnInit {
   holiday: any = {};
   loading: boolean = false;
 
-  constructor(private apiBrasilService: ApiBrasilService, private messagesService: MessagesService) {}
+  constructor(private apiBrasilService: ApiBrasilService,
+    private messagesService: MessagesService) {}
 
   ngOnInit() {
     this.holidays();

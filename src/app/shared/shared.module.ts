@@ -6,9 +6,10 @@ import { IonicModule } from '@ionic/angular';
 import { FormAuthComponent } from '../components/form-auth/form-auth.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { ReloadPageComponent } from '../components/reload-page/reload-page.component';
 
 @NgModule({
-  declarations: [FormAuthComponent, HeaderComponent],
+  declarations: [FormAuthComponent, HeaderComponent, ReloadPageComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     FormAuthComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReloadPageComponent
   ]
 })
 export class SharedModule {}

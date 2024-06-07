@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content [fullscreen]="true">
-
+  <app-reload-page></app-reload-page>
   <div *ngIf="favorites.length > 0; else elseFavorites">
     <ion-card class="primary" *ngFor="let favorite of favorites">
       <ion-card-header>
