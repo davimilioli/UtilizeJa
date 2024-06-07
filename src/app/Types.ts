@@ -1,6 +1,7 @@
 export interface Favorites {
     tool: string,
-    link: string
+    link: string,
+    label?: string
 }
 
 export interface AuthFormData {

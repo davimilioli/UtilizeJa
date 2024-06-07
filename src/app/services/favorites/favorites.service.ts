@@ -38,6 +38,21 @@ export class FavoritesService {
   }
 
   async getFavorites() {
-    return await this.storage.get('Favorites') || [];
+    const favoriteList: Favorites[] = await this.storage.get('Favorites') || [];
+    const tools: any = {
+      'toDoList': { label: 'Lista de Afazeres', link: 'to-do-list' },
+      'notepad': { label: 'Bloco de Notas', link: 'notepad' },
+      'conversorPdf': { label: 'Conversor de PDF', link: 'conversor-pdf' }
+    }
+
+    const formatedFavorites = favoriteList.map(favorite => {
+      const toolType = favorite.tool;
+      const { label, link } = tools[toolType] || { label: 'Outro', link: '' };
+
+      return { ...favorite, label: label, link: link };
+  });
+
+
+    return formatedFavorites;
   }
 }
