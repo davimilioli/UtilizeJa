@@ -51,8 +51,31 @@
       </div>
     </div>
     <app-slide></app-slide>
-
+    <div class="holiday">
+      <div class="holiday-content" [class.loading-active]="loading">
+        <ion-spinner name="dots" *ngIf="loading"></ion-spinner> 
+        <ion-list *ngIf="!loading && holiday">
+          <ion-item>
+            <ion-label>
+              <h3>Próximo feriado</h3>
+              <p>{{ holiday.nextHoliday }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h3>Data</h3>
+              <p>{{ holiday.date }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h3>Dias faltantes</h3>
+              <p>{{ holiday.daysNextHoliday }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list> 
+      </div>
+    </div>
   </div>
 
-  
 </ion-content>

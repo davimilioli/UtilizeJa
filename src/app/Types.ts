@@ -17,4 +17,10 @@ export interface Cep {
     street: string,
     service: string
 }
+
+export interface Holiday {
+    date: string,
+    name: string,
+    type: string
+}
   

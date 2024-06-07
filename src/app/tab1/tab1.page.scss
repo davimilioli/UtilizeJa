@@ -64,3 +64,30 @@ ion-header{
     }
 }
 
+.holiday{
+
+    .holiday-content{
+
+        height: auto;
+        border: 1px solid var(--ion-color-primary);
+        box-shadow: 1px 9px 0px -5px rgba(0,0,0,1);
+
+        &.loading-active{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 224px;
+        }
+
+        ion-item{
+            --border-color: var(--ion-color-primary);
+            
+            padding-right: 1rem;
+            &:last-child{
+                --border-style: 0;
+            }
+        }
+    }
+}
+
