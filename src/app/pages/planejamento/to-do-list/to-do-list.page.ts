@@ -112,11 +112,9 @@ export class ToDoListPage implements OnInit {
       this.tasks.splice(index, 1);
       await this.storage.set('Tasks', this.tasks);
     }
-    console.log(index);
   }
 
   async editTask(task: any){
-    console.log(task);
     let data = await this.storage.get('Tasks');
     
     if (data) {

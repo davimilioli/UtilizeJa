@@ -17,7 +17,6 @@ export class FormAuthComponent implements OnInit {
   authData: AuthFormData | null = null;
 
   constructor(private formBuilder: FormBuilder) {
-    console.log(this.showRepeatPassword)
 
     if(this.showRepeatPassword){
 

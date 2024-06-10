@@ -39,15 +39,15 @@ export class Tab1Page implements OnInit {
           const nextHolidayDate = new Date(nextHoliday.date);
           const daysNextHoliday = Math.ceil((nextHolidayDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-          console.log('Data de hoje', formatDate(formatToday, 'dd/MM/yyyy', 'pt-BR'))
-          console.log('Próximo feriado', nextHoliday.name);
-          console.log('Data', formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'));
-          console.log('Dias até o próximo feriado', daysNextHoliday)
+          //console.log('Data de hoje', formatDate(formatToday, 'dd/MM/yyyy', 'pt-BR'))
+          //console.log('Próximo feriado', nextHoliday.name);
+          //console.log('Data', formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'));
+          //console.log('Dias até o próximo feriado', daysNextHoliday)
           setTimeout(() => {
             this.loading = false;
             this.holiday = {nextHoliday: nextHoliday.name, date: formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'), daysNextHoliday };
           }, 2000)
-          console.log(this.holiday);
+          //console.log(this.holiday);
         }
       },
       error: (error: any) => {

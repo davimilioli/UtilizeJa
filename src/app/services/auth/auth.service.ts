@@ -38,10 +38,9 @@ export class AuthService {
   async createSign(email: string, password: string){
     try{
       await this.angularFireAuth.createUserWithEmailAndPassword(email, password)
-      console.log('Registrou')
       return true;
     } catch(error){
-      console.error('Erro ao criar usuário')
+      //console.error('Erro ao criar usuário')
       return false;
     }
   }

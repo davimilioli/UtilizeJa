@@ -28,8 +28,6 @@ export class IntroducaoPage implements OnInit {
 
       this.showSlide = true;
     }
-  
-    console.log(this.showSlide)
   }
 
   nextSlide(){
@@ -38,8 +36,6 @@ export class IntroducaoPage implements OnInit {
     } else {
       this.router.navigate(['/login'])
     }
-
-    console.log(this.currentSlide);
   }
 
   jumpSlide(){

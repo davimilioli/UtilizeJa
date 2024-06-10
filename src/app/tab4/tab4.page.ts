@@ -25,7 +25,6 @@ export class Tab4Page {
  async initializeUser() {
     try {
       this.user = await this.authService.initializeUser();
-      console.log(this.user)
     } catch (error) {
       this.messagesService.toast('Erro ao inicializar usuário');
       //console.error('Erro ao inicializar usuário', error);

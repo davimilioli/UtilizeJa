@@ -18,7 +18,6 @@ export class ReloadPageService {
   reload() {
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      console.log(currentUrl)
       this.router.navigate([currentUrl]);
     });
   }

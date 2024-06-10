@@ -98,7 +98,6 @@ export class NotepadPage implements OnInit {
   }
 
   async editNote(titleNote: string) {
-    console.log(titleNote);
     let data = await this.storage.get('Notes');
     
     if (data) {
@@ -131,7 +130,6 @@ export class NotepadPage implements OnInit {
 
       this.notes = updatedData;
   
-      console.log('Exluida: ', titleNote);
       this.messagesService.toast('Nota excluida');
     }
   }
