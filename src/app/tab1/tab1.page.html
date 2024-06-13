@@ -5,6 +5,7 @@
   <div class="home">
     <div class="introduction">
       <div class="introduction-content">
+        <app-config-home [isModalOpen]="isOpenModal"></app-config-home>
         <div class="introduction-services">
           <a class="introduction-item" [routerLink]="['/conversor-pdf']">
             <div class="introduction-item-icon">
@@ -41,6 +42,20 @@
             <div class="introduction-description">
               <h4>Bloco de notas</h4>
               <p>Faça suas anotações</p>
+            </div>
+            <div class="introduction-direct">
+              <ion-button shape="round" fill="clear">
+                <ion-icon slot="icon-only" name="arrow-forward" color="primary"></ion-icon>
+              </ion-button>
+            </div>
+          </a>
+          <a class="introduction-item tertiary" (click)="openModal()">
+            <div class="introduction-item-icon">
+              <ion-icon name="leaf"></ion-icon>
+            </div>
+            <div class="introduction-description">
+              <h4>Personalizar home</h4>
+              <p>Personalize sua tela inicial</p>
             </div>
             <div class="introduction-direct">
               <ion-button shape="round" fill="clear">

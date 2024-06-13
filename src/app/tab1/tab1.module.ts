@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { SlideComponent } from '../components/slide/slide.component';
 import { SharedModule } from '../shared/shared.module';
+import { ConfigHomeComponent } from '../components/config-home/config-home.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { SharedModule } from '../shared/shared.module';
     Tab1PageRoutingModule,
     SharedModule
   ],
-  declarations: [Tab1Page, SlideComponent]
+  declarations: [Tab1Page, SlideComponent, ConfigHomeComponent]
 })
 export class Tab1PageModule {}

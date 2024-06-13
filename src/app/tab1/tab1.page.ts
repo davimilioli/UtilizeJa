@@ -15,9 +15,12 @@ registerLocaleData(localePt);
 export class Tab1Page implements OnInit {
   holiday: any = {};
   loading: boolean = false;
+  isOpenModal: boolean = false;
 
-  constructor(private apiBrasilService: ApiBrasilService,
-    private messagesService: MessagesService) {}
+  constructor(
+    private apiBrasilService: ApiBrasilService,
+    private messagesService: MessagesService,
+  ) {}
 
   ngOnInit() {
     this.holidays();
@@ -55,4 +58,9 @@ export class Tab1Page implements OnInit {
       }
     })
   }
+
+  openModal(){
+    this.isOpenModal = true
+  }
+
 }
