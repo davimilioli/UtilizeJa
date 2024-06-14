@@ -13,11 +13,11 @@
     </ion-text>
   </div>
 
-  <ion-input labelPlacement="stacked" placeholder="Digite sua senha" formControlName="password" name="password">
+  <ion-input labelPlacement="stacked" type="password" placeholder="Digite sua senha" formControlName="password" name="password">
     <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-    <ion-button fill="clear" slot="end" aria-label="Show/hide">
+<!--     <ion-button fill="clear" slot="end" aria-label="Show/hide">
       <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
-    </ion-button>
+    </ion-button> -->
   </ion-input>
   <div *ngIf="authForm.get('password')?.errors?.['required'] && (authForm.get('password')?.dirty || authForm.get('password')?.touched)">
     <ion-text color="danger">
