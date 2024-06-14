@@ -9,15 +9,36 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-list>
-        <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
-          <ion-item *ngFor="let tool of tools">
-            <ion-label> {{ tool.name }} </ion-label>
-            <ion-icon name="{{tool.icon}}"></ion-icon>
-            <ion-reorder slot="end"></ion-reorder>
-          </ion-item>
-        </ion-reorder-group>
-      </ion-list>
+      <form>
+        <ion-list>
+          <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($event)">
+            <ion-item *ngFor="let tool of tools">
+              <ng-container *ngIf="tool.isActive">
+                <ion-label>{{ tool.name }}</ion-label>
+                <ion-icon [name]="tool.icon" slot="end"></ion-icon>
+                <ion-reorder slot="end"></ion-reorder>
+              </ng-container>
+            </ion-item>
+          </ion-reorder-group>
+        </ion-list>
+        <ion-button color="primary" fill="outline" (click)="saveOrder()">Salvar</ion-button>
+        <ion-button color="primary" fill="outline">Ativar Config na Home</ion-button>
+      </form>
     </ion-content>
   </ng-template>
 </ion-modal>
+
+<div class="services" *ngIf="configHome && tools && tools.length > 0">
+  <div class="services-content">
+    <a class="services-item" *ngFor="let tool of tools">
+      <div class="services-item-icon">
+        <ion-icon [name]="tool.icon"></ion-icon>
+      </div>
+      <div class="service-item-title">
+        <ion-text>
+          <h4>{{ tool.name }}</h4>
+        </ion-text>
+      </div>
+    </a>
+  </div>
+</div>
