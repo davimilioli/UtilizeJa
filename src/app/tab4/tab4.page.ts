@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import firebase from 'firebase/compat/app';
-import { Router } from '@angular/router';
-import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
   selector: 'app-tab4',
@@ -13,34 +11,23 @@ import { MessagesService } from '../services/messages/messages.service';
 export class Tab4Page {
   user: firebase.User | null = null;
 
-  constructor(private authService: AuthService,
-    private router: Router,
-    private messagesService: MessagesService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(){
     this.initializeUser();
   } 
 
- async initializeUser() {
-    try {
-      this.user = await this.authService.initializeUser();
-    } catch (error) {
-      this.messagesService.toast('Erro ao inicializar usuário');
-      //console.error('Erro ao inicializar usuário', error);
-    }
+  async initializeUser() {
+    this.user = await this.authService.initializeUser();
   } 
 
-  async logoutFirebase(){
-    try {
-      await this.authService.logoutAuthFirebase();
+  async logout(){
+    const authLogout: any = await this.authService.logoutAuth();
+    
+    if(authLogout){
       this.user = null;
-      this.router.navigate(['/login']);
-    } catch(error: any) {
-      this.messagesService.toast('Erro ao fazer logout');
-      //console.error('Erro ao fazer logout', error);
     }
+    
   }
-
 
 }

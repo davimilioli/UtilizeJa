@@ -38,7 +38,7 @@
           </div>
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
         </a>
-        <a *ngIf="user; else userExisting" (click)="logoutFirebase()">
+        <a *ngIf="user; else userExisting" (click)="logout()">
           <div class="button-config-label">
             <ion-icon slot="start" name="log-out"></ion-icon>
             Sair

@@ -1,5 +1,6 @@
+
 <form class="login-form" [formGroup]="authForm" (ngSubmit)="submit()">
-  <ion-input labelPlacement="stacked" placeholder="Digite seu email" formControlName="email" name="email">
+  <ion-input labelPlacement="stacked" placeholder="Digite seu email" formControlName="email" name="email" type="email" required>
     <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
   </ion-input>
   <div *ngIf="authForm.get('email')?.errors?.['required'] && (authForm.get('email')?.dirty || authForm.get('email')?.touched)">
@@ -13,7 +14,7 @@
     </ion-text>
   </div>
 
-  <ion-input labelPlacement="stacked" type="password" placeholder="Digite sua senha" formControlName="password" name="password">
+  <ion-input labelPlacement="stacked" type="password" placeholder="Digite sua senha" formControlName="password" name="password" required>
     <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
 <!--     <ion-button fill="clear" slot="end" aria-label="Show/hide">
       <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>

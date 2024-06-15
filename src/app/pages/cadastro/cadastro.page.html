@@ -17,7 +17,7 @@
   </div>
   <app-form-auth
   (onSubmit)="registerLoginFirebase($event)"
-  (signGoogle)="loginFirebaseGoogle()"
+  (signGoogle)="loginAuthGoogle()"
   [btnText]="'Cadastrar'"
   ></app-form-auth>
   <p class="text-direct-form ion-text-center">Já possui login? <a [routerLink]="['/login']" >Login</a></p>

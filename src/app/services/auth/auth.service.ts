@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'; 
 import { Storage } from '@ionic/storage-angular';
+import { MessagesService } from '../messages/messages.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,11 @@ import { Storage } from '@ionic/storage-angular';
 export class AuthService {
   currentUser: firebase.User | null = null;
 
-  constructor(private angularFireAuth: AngularFireAuth, private storage: Storage) {
+  constructor(private angularFireAuth: AngularFireAuth,
+    private storage: Storage,
+    private messagesService: MessagesService,
+    private router: Router
+  ) {
     this.initializeAuthService();
   }
 
@@ -31,28 +37,25 @@ export class AuthService {
 
       await this.initializeUser();
     } catch (error) {
-      console.error(error);
+      this.messagesService.toast('Ocorreu algum erro, tente novamente mais tarde');
     }
   }
 
-  async createSign(email: string, password: string){
+  async createLogin(email: string, password: string){
     try{
       await this.angularFireAuth.createUserWithEmailAndPassword(email, password)
-      return true;
+      this.router.navigate(['/login']);
     } catch(error){
-      //console.error('Erro ao criar usuário')
-      return false;
+      this.messagesService.toast('Erro ao criar usuário');
     }
   }
 
-  async signIn(email: string, password: string): Promise<boolean> {
+  async signInLogin(email: string, password: string) {
     try {
       await this.angularFireAuth.signInWithEmailAndPassword(email, password);
-      console.log('Logou');
-      return true;
+      this.router.navigate(['/tabs/tab4']);
     } catch(error) {
-      console.log('Erro ao fazer login');
-      return false;
+      this.messagesService.toast('Email ou senha incorretos');
     }
   }
 
@@ -60,23 +63,30 @@ export class AuthService {
     await this.storage.create(); 
   }
 
-  async loginAuthFirebase(){
+  async loginAuthGoogle(){
     try{
-      await this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-      return true;
-    } catch(error){
-      return false;
+      const user = await this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+      if (user) {
+        this.router.navigate(['/tabs/tab4']);
+        this.messagesService.toast('Autenticado com sucesso');
+      } else {
+        this.messagesService.toast('Não foi possível autenticar');
+      }
+
+    } catch(error: any) {
+      this.messagesService.toast('Não foi possível autenticar');
     }
   }
 
-  async logoutAuthFirebase(){
+  async logoutAuth(){
     try{
       await this.angularFireAuth.signOut();
       await this.storage.remove('user');
       this.currentUser = null;
-      return true;
+      this.router.navigate(['/login']);
     } catch(error){
-      return false;
+      this.messagesService.toast('Erro ao fazer logout.');
     }
   }
 
@@ -88,7 +98,7 @@ export class AuthService {
         return this.currentUser = JSON.parse(storedUser)
       }
     } catch (error) {
-      console.error(error);
+      this.messagesService.toast('Erro ao inicializar usuário');
     }
   }
 
