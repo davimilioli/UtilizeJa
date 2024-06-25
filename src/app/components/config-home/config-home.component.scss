@@ -16,8 +16,28 @@ form{
     }
 }
 
+.config-action{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+ion-item{
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+}
+
 .services{
     margin-bottom: 1rem;
+
+    .services-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
     .services-content{
         display: flex;
         gap: 10px;
@@ -51,4 +71,10 @@ form{
 
         }
     }
+}
+
+.list-actions{
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }

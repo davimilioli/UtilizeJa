@@ -3,6 +3,7 @@ import { ApiBrasilService } from '../services/apibrasil/api-brasil.service';
 import { MessagesService } from '../services/messages/messages.service';
 import { formatDate, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { Storage } from '@ionic/storage-angular';
 
 
 registerLocaleData(localePt);
@@ -16,14 +17,22 @@ export class Tab1Page implements OnInit {
   holiday: any = {};
   loading: boolean = false;
   isOpenModal: boolean = false;
+  configHome: boolean = false;
 
   constructor(
     private apiBrasilService: ApiBrasilService,
     private messagesService: MessagesService,
+    private storage: Storage
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.create();
     this.holidays();
+    this.getConfigHome();
+  }
+
+  async getConfigHome(){
+    this.configHome = await this.storage.get('configHome');
   }
 
   holidays(){
@@ -42,15 +51,8 @@ export class Tab1Page implements OnInit {
           const nextHolidayDate = new Date(nextHoliday.date);
           const daysNextHoliday = Math.ceil((nextHolidayDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-          //console.log('Data de hoje', formatDate(formatToday, 'dd/MM/yyyy', 'pt-BR'))
-          //console.log('Próximo feriado', nextHoliday.name);
-          //console.log('Data', formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'));
-          //console.log('Dias até o próximo feriado', daysNextHoliday)
-          setTimeout(() => {
-            this.loading = false;
-            this.holiday = {nextHoliday: nextHoliday.name, date: formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'), daysNextHoliday };
-          }, 2000)
-          //console.log(this.holiday);
+          this.loading = false;
+          this.holiday = {nextHoliday: nextHoliday.name, date: formatDate(nextHolidayDate, 'dd/MM/yyyy', 'pt-BR'), daysNextHoliday };
         }
       },
       error: (error: any) => {
@@ -63,4 +65,7 @@ export class Tab1Page implements OnInit {
     this.isOpenModal = true
   }
 
+  configHomeToggle(newValue: boolean) {
+    this.configHome = newValue;
+  }
 }

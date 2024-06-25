@@ -2,43 +2,60 @@
   <ng-template>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Config Tela Inicial</ion-title>
+        <ion-title>Ferramentas</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="setOpen(false)">Fechar</ion-button>
         </ion-buttons>
       </ion-toolbar>
+      <ion-list>
+        <div class="config-action">
+          <ion-label>Ativar</ion-label>
+          <ion-toggle [checked]="configHome" (ionChange)="toggleConfig($event)"></ion-toggle>
+        </div>
+      </ion-list>
+      
     </ion-header>
     <ion-content class="ion-padding">
       <form>
-        <ion-list>
-          <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($event)">
-            <ion-item *ngFor="let tool of tools">
-              <ng-container *ngIf="tool.isActive">
-                <ion-label>{{ tool.name }}</ion-label>
-                <ion-icon [name]="tool.icon" slot="end"></ion-icon>
-                <ion-reorder slot="end"></ion-reorder>
-              </ng-container>
-            </ion-item>
-          </ion-reorder-group>
-        </ion-list>
-        <ion-button color="primary" fill="outline" (click)="saveOrder()">Salvar</ion-button>
-        <ion-button color="primary" fill="outline">Ativar Config na Home</ion-button>
+          <ion-list>
+            <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($event)">
+              <ion-item *ngFor="let tool of tools">
+                <ion-label> {{ tool.name }} </ion-label>
+                <div class="list-actions">
+                  <ion-toggle [checked]="tool.active" (ionChange)="toggleActive(tool, $event)"></ion-toggle>
+                  <ion-reorder slot="end"></ion-reorder>
+                </div>
+              </ion-item>
+            </ion-reorder-group>
+          </ion-list>
+        <!-- <ion-button color="primary" fill="outline">Salvar</ion-button> -->
+        <ion-button color="primary" fill="outline" (click)="clearOrder()">Limpar ordem</ion-button>
       </form>
     </ion-content>
   </ng-template>
 </ion-modal>
 
-<div class="services" *ngIf="configHome && tools && tools.length > 0">
+<div class="services" *ngIf="configHome">
+  <div class="services-header">
+    <ion-text>
+      <h4>Ferramentas</h4>
+    </ion-text>
+    <ion-button fill="clear" (click)="setOpen(true)">
+      <ion-icon slot="icon-only" name="settings"></ion-icon>
+    </ion-button>
+  </div>
   <div class="services-content">
-    <a class="services-item" *ngFor="let tool of tools">
-      <div class="services-item-icon">
-        <ion-icon [name]="tool.icon"></ion-icon>
-      </div>
-      <div class="service-item-title">
-        <ion-text>
-          <h4>{{ tool.name }}</h4>
-        </ion-text>
-      </div>
-    </a>
+    <ng-container *ngFor="let tool of tools">
+      <a class="services-item" *ngIf="tool.active">
+        <div class="services-item-icon">
+          <ion-icon [name]="tool.icon"></ion-icon>
+        </div>
+        <div class="service-item-title">
+          <ion-text>
+            <h4>{{ tool.name }}</h4>
+          </ion-text>
+        </div>
+      </a>
+    </ng-container>
   </div>
 </div>

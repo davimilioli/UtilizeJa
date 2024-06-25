@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
@@ -9,25 +9,23 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class ConfigHomeComponent implements OnInit {
   @Input() isModalOpen: boolean = false;
-  tools: any[] = []; 
-  configHome: boolean = false; // criar uma função para ativar e desativar
+  configHome: boolean = false;
+  @Output() configHomeToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  tools: any[] = [
+    { name: 'Lista de Afazeres', icon: 'checkmark-done-circle', active: true },
+    { name: 'Conversor de PDF', icon: 'document', active: false },
+    { name: 'Bloco de Notas', icon: 'pencil', active: false },
+    { name: 'Consultar CEP', icon: 'search', active: false }
+  ]; 
+  
+  newOrder: any;
 
   constructor(private storage: Storage) { }
 
   async ngOnInit() {
     await this.storage.create();
-    const storedItems = await this.storage.get('OrderItems');
-    if (storedItems && storedItems.length > 0) {
-      this.tools = storedItems;
-    } else {
-      // criar função para ativar e desativar tool
-      this.tools = [
-        { name: 'Lista de Afazeres', icon: 'checkmark-done-circle', active: false },
-        { name: 'Conversor de PDF', icon: 'document', active: false },
-        { name: 'Bloco de Notas', icon: 'pencil', active: false },
-        { name: 'Consultar CEP', icon: 'search', active: false }
-      ];
-    }
+    await this.loadOrder();
+    await this.loadConfig();
   }
 
   setOpen(isOpen: boolean) {
@@ -41,16 +39,45 @@ export class ConfigHomeComponent implements OnInit {
     const movedItem = this.tools.splice(fromIndex, 1)[0];
     this.tools.splice(toIndex, 0, movedItem);
 
-    await this.saveOrder();
-
     console.log('Ordem atualizada', this.tools);
+    await this.saveOrder(this.tools);
 
     ev.detail.complete();
   }
 
-  async saveOrder() {
-    await this.storage.set('OrderItems', this.tools);
-    console.log('Ordem salva', this.tools);
+  async toggleConfig(event: CustomEvent) {
+    this.configHome = event.detail.checked;
+    console.log('Configuração de favoritos', this.configHome);
+    await this.storage.set('configHome', this.configHome);
+    this.configHomeToggle.emit(this.configHome);
   }
 
+  async toggleActive(tool: any, event: CustomEvent) {
+    tool.active = event.detail.checked;
+    await this.saveOrder(this.tools);
+  }
+
+  async saveOrder(order: any) {
+    await this.storage.set('order', order);
+  }
+
+  async loadOrder() {
+    const savedOrder = await this.storage.get('order');
+    if (savedOrder) {
+      this.tools = savedOrder;
+    }
+    console.log('Ordem:', this.tools);
+  }
+
+  async loadConfig() {
+    const savedConfig = await this.storage.get('configHome');
+    if (savedConfig !== null) {
+      this.configHome = savedConfig;
+    }
+    console.log('Configuração carregada', this.configHome);
+  }
+
+  async clearOrder() {
+    await this.storage.remove('order');
+  }
 }

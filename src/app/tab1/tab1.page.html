@@ -5,8 +5,8 @@
   <div class="home">
     <div class="introduction">
       <div class="introduction-content">
-        <app-config-home [isModalOpen]="isOpenModal"></app-config-home>
-        <div class="introduction-services">
+        <app-config-home [isModalOpen]="isOpenModal" (configHomeToggle)="configHomeToggle($event)"></app-config-home>
+        <div class="introduction-services" *ngIf="configHome == false">
           <a class="introduction-item" [routerLink]="['/conversor-pdf']">
             <div class="introduction-item-icon">
               <ion-icon name="document"></ion-icon>
