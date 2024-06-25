@@ -39,7 +39,6 @@ export class ConfigHomeComponent implements OnInit {
     const movedItem = this.tools.splice(fromIndex, 1)[0];
     this.tools.splice(toIndex, 0, movedItem);
 
-    console.log('Ordem atualizada', this.tools);
     await this.saveOrder(this.tools);
 
     ev.detail.complete();
@@ -47,7 +46,6 @@ export class ConfigHomeComponent implements OnInit {
 
   async toggleConfig(event: CustomEvent) {
     this.configHome = event.detail.checked;
-    console.log('Configuração de favoritos', this.configHome);
     await this.storage.set('configHome', this.configHome);
     this.configHomeToggle.emit(this.configHome);
   }
@@ -66,7 +64,6 @@ export class ConfigHomeComponent implements OnInit {
     if (savedOrder) {
       this.tools = savedOrder;
     }
-    console.log('Ordem:', this.tools);
   }
 
   async loadConfig() {
@@ -74,7 +71,6 @@ export class ConfigHomeComponent implements OnInit {
     if (savedConfig !== null) {
       this.configHome = savedConfig;
     }
-    console.log('Configuração carregada', this.configHome);
   }
 
   async clearOrder() {

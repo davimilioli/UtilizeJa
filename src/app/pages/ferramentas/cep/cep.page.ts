@@ -65,7 +65,6 @@ export class CepPage implements OnInit {
 
     const start = event.target.selectionStart;
     const end = event.target.selectionEnd;
-    //console.log(event);
 
     // Remove o hífen quando for apagar o valor do input
     if (event.inputType === 'deleteContentBackward' && start === 6 && end === 6) {
