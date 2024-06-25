@@ -41,6 +41,10 @@ export class AuthService {
     }
   }
 
+  get authState() {
+    return this.angularFireAuth.authState;
+  }
+
   async createLogin(email: string, password: string){
     try{
       await this.angularFireAuth.createUserWithEmailAndPassword(email, password)
@@ -93,13 +97,13 @@ export class AuthService {
   async initializeUser() {
     try {
       const storedUser = await this.storage.get('user');
-
       if (storedUser) {
-        return this.currentUser = JSON.parse(storedUser)
+        this.currentUser = JSON.parse(storedUser);
       }
+      return this.currentUser;
     } catch (error) {
       this.messagesService.toast('Erro ao inicializar usuário');
+      return null;
     }
   }
-
 }

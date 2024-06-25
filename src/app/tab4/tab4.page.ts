@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import firebase from 'firebase/compat/app';
 
@@ -7,15 +7,20 @@ import firebase from 'firebase/compat/app';
   templateUrl: 'tab4.page.html',
   styleUrls: ['tab4.page.scss']
 })
-
-export class Tab4Page {
+export class Tab4Page implements OnInit {
   user: firebase.User | null = null;
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(){
-    this.initializeUser();
-  } 
+  ngOnInit() {
+    this.authService.authState.subscribe(user => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.initializeUser();
+      }
+    });
+  }
 
   async initializeUser() {
     this.user = await this.authService.initializeUser();
@@ -29,5 +34,4 @@ export class Tab4Page {
     }
     
   }
-
 }
