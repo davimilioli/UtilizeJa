@@ -9,7 +9,7 @@ favoriteActived="true"
 <ion-content [fullscreen]="true">
   <div class="block-notFound"  *ngIf="!notes || notes.length === 0; else elseNotes">
     <p class="ion-text-center">Você não possui nenhuma anotação</p>
-    <ion-button shape="default" (click)="openModal()" class="button" fill="outline">Criar</ion-button>
+<!--     <ion-button shape="default" (click)="openModal()" class="button" fill="outline">Criar</ion-button> -->
   </div>
   <ng-template #elseNotes>
     <div *ngFor="let note of notes">
