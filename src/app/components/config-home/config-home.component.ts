@@ -12,10 +12,10 @@ export class ConfigHomeComponent implements OnInit {
   configHome: boolean = false;
   @Output() configHomeToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   tools: any[] = [
-    { name: 'Lista de Afazeres', icon: 'checkmark-done-circle', active: true },
-    { name: 'Conversor de PDF', icon: 'document', active: false },
-    { name: 'Bloco de Notas', icon: 'pencil', active: false },
-    { name: 'Consultar CEP', icon: 'search', active: false }
+    { name: 'Lista de Afazeres', icon: 'checkmark-done-circle', link: 'to-do-list', active: true },
+    { name: 'Conversor de PDF', icon: 'document', link: 'conversor-pdf', active: false },
+    { name: 'Bloco de Notas', icon: 'pencil', link: 'notepad', active: false },
+    { name: 'Consultar CEP', icon: 'search', link: 'cep', active: false }
   ]; 
   
   newOrder: any;

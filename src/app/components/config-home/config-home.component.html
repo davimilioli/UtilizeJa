@@ -29,7 +29,7 @@
             </ion-reorder-group>
           </ion-list>
         <!-- <ion-button color="primary" fill="outline">Salvar</ion-button> -->
-        <ion-button color="primary" fill="outline" (click)="clearOrder()">Limpar ordem</ion-button>
+<!--         <ion-button color="primary" fill="outline" (click)="clearOrder()">Limpar ordem</ion-button> -->
       </form>
     </ion-content>
   </ng-template>
@@ -46,7 +46,7 @@
   </div>
   <div class="services-content">
     <ng-container *ngFor="let tool of tools">
-      <a class="services-item" *ngIf="tool.active">
+      <a class="services-item" *ngIf="tool.active" [routerLink]="['/', tool.link]">
         <div class="services-item-icon">
           <ion-icon [name]="tool.icon"></ion-icon>
         </div>
