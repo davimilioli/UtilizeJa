@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 import firebase from 'firebase/compat/app';
 import { MessagesService } from './services/messages/messages.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +18,7 @@ export class AppComponent {
     private messagesService: MessagesService
   ) {
 
-    if(environment.production === true){
-      this.startApp();
-    }
+    this.startApp();
   }
 
   startApp() {
