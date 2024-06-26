@@ -32,7 +32,7 @@ export class Tab1Page implements OnInit {
   }
 
   async getConfigHome(){
-    this.configHome = await this.storage.get('configHome');
+    this.configHome = await this.storage.get('configHome') ?? false;
   }
 
   holidays(){
