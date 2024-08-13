@@ -19,7 +19,7 @@ Projeto acadêmico desenvolvido no período de Desenvolvimendo para Aplicativos 
 ## Como iniciar o projeto
 
 ### Pré-requisitos globais:
-`npm i @angular/cli`
+`npm install -g @ionic/cli`
 
 ### Instalação
 `npm install`
