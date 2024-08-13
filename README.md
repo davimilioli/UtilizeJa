@@ -25,4 +25,4 @@ Projeto acadêmico desenvolvido no período de Desenvolvimendo para Aplicativos 
 `npm install`
 
 ### Rodar o projeto
-`ng serve`
+`ionic serve`
